@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Head from "next/head"; // Importuj komponent Head
 import Banner from "../../components/Banner";
 import bannerImg from "./../../Images/HeaderImg.jpg";
 import AboutSection from "../../pageComponents/HomeComponents/AboutSection";
@@ -17,16 +18,16 @@ const Page: React.FC = () => {
       const width = window.innerWidth;
 
       if (width < 768) {
-        setDeviceType("mobile"); // Telefon
+        setDeviceType("mobile");
       } else if (width >= 768 && width < 1024) {
-        setDeviceType("tablet"); // Tablet
+        setDeviceType("tablet");
       } else {
-        setDeviceType("desktop"); // Komputer
+        setDeviceType("desktop");
       }
     };
 
-    handleResize(); // Ustaw początkowy typ urządzenia
-    window.addEventListener("resize", handleResize); // Nasłuchuj zmian rozmiaru okna
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -67,17 +68,30 @@ const Page: React.FC = () => {
 
   return (
     <div>
-      <header>{renderBanner()}</header>
-      <section>
-        <InformationSection />
-      </section>
+      <Head>
+        <title>Nieruchomości w Batumi - Strona główna</title>
+        <meta
+          name="description"
+          content="Znajdź idealne nieruchomości w Batumi. Oferujemy różnorodne opcje dla każdego. Sprawdź naszą ofertę!"
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+      </Head>
+      <div className="overflow-x-hidden overflow-y-hidden">
+        <header>{renderBanner()}</header>
+        <section>
+          <InformationSection />
+        </section>
 
-      <section>
-        <AboutSection />
-      </section>
-      <section>
-        <ServiceSection/>
-      </section>
+        <section>
+          <AboutSection />
+        </section>
+        <section>
+          <ServiceSection />
+        </section>
+      </div>
     </div>
   );
 };

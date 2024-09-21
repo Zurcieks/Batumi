@@ -22,14 +22,11 @@ const AboutSection: React.FC = () => {
           taciti sociosqu ad litora torquent per conubia nostra, per inceptos
           himenaeos. Mauris in erat justo.
         </p>
-        <Link legacyBehavior href="/o-nas">
-       
-        <a
-         
+        <Link
           className="inline-block px-8 py-4 bg-blue-600 text-white font-medium rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
+          href="/o-nas"
         >
           Dowiedz się więcej!
-        </a>
         </Link>
       </div>
     </section>
