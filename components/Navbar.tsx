@@ -5,6 +5,7 @@ import Logo from './../Images/logo.png';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialIcon } from "react-social-icons";
+import ReactCountryFlag from "react-country-flag";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -16,15 +17,12 @@ const Navbar: React.FC = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Funkcja do obsługi scrollowania i ukrywania/pokazywania navbara
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > lastScrollY && currentScrollY > 150) {
-      // Scrollujemy w dół i pozycja scrolla jest wystarczająco duża
       setIsNavbarVisible(false);
     } else if (currentScrollY < lastScrollY) {
-      // Scrollujemy w górę
       setIsNavbarVisible(true);
     }
 
@@ -32,11 +30,8 @@ const Navbar: React.FC = () => {
   };
 
   useEffect(() => {
-    // Dodajemy event listener do scrollowania
     window.addEventListener("scroll", handleScroll);
-
     return () => {
-      // Usuwamy event listener przy odmontowaniu komponentu
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
@@ -59,6 +54,16 @@ const Navbar: React.FC = () => {
             priority
           />
         </Link>
+
+        {/* Center: Language switcher */}
+        <div className="flex justify-center items-center space-x-4">
+          <button className="text-white">
+          <ReactCountryFlag countryCode="PL" svg style={{ fontSize: '1.5em' }} /> {/* Polska */}
+          </button>
+          <button className="text-white">
+          <ReactCountryFlag countryCode="GB" svg style={{ fontSize: '1.5em' }} /> {/* UK */}
+          </button>
+        </div>
 
         {/* Mobile menu button */}
         <div className="md:hidden">
