@@ -1,17 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Head from "next/head"; // Importuj komponent Head
-import Banner from "../../components/Banner";
+import Head from "next/head";
+import dynamic from "next/dynamic"; // Importujemy dynamiczne ładowanie
+
+
+// Dynamiczne ładowanie komponentów
+const Banner = dynamic(() => import("../../components/Banner"), { ssr: false });
+const BannerMobile = dynamic(() => import("../../components/BannerMobile"), { ssr: false });
+const InformationSection = dynamic(() => import("../../pageComponents/HomeComponents/InformationSection"), { ssr: false });
+const AboutSection = dynamic(() => import("../../pageComponents/HomeComponents/AboutSection"), { ssr: false });
+const ServiceSection = dynamic(() => import("../../pageComponents/HomeComponents/ServiceSection"), { ssr: false });
+const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponents/InvestingSection"), {ssr: false})
+
 import bannerImg from "./../../Images/HeaderImg.jpg";
-import AboutSection from "../../pageComponents/HomeComponents/AboutSection";
-import BannerMobile from "../../components/BannerMobile";
-import InformationSection from "../../pageComponents/HomeComponents/InformationSection";
-import ServiceSection from "../../pageComponents/HomeComponents/ServiceSection";
+import ContactSection from "../../pageComponents/HomeComponents/ContactSection";
+
 
 const Page: React.FC = () => {
-  const [deviceType, setDeviceType] = useState<
-    "mobile" | "tablet" | "desktop"
-  >();
+  const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">();
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,37 +38,31 @@ const Page: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const renderMobileBanner = () => (
-    <BannerMobile
-      isButtonShown={true}
-      bannerImage={bannerImg}
-      title="Nieruchomości w Batumi"
-    />
-  );
-
-  const renderTabletBanner = () => (
-    <BannerMobile
-      isButtonShown={true}
-      bannerImage={bannerImg}
-      title="Nieruchomości w Batumi"
-    />
-  );
-
-  const renderDesktopBanner = () => (
-    <Banner
-      isButtonShown={true}
-      bannerImage={bannerImg}
-      title="Nieruchomości w Batumi - Desktop!"
-    />
-  );
-
   const renderBanner = () => {
     if (deviceType === "mobile") {
-      return renderMobileBanner();
+      return (
+        <BannerMobile
+          isButtonShown={true}
+          bannerImage={bannerImg}
+          title="Nieruchomości w Batumi"
+        />
+      );
     } else if (deviceType === "tablet") {
-      return renderTabletBanner();
+      return (
+        <BannerMobile
+          isButtonShown={true}
+          bannerImage={bannerImg}
+          title="Nieruchomości w Batumi"
+        />
+      );
     } else {
-      return renderDesktopBanner();
+      return (
+        <Banner
+          isButtonShown={true}
+          bannerImage={bannerImg}
+          title="Nieruchomości w Batumi - Desktop!"
+        />
+      );
     }
   };
 
@@ -90,6 +90,12 @@ const Page: React.FC = () => {
         </section>
         <section>
           <ServiceSection />
+        </section>
+        <section>
+          <InvestingSection/>
+        </section>
+        <section>
+          <ContactSection/>
         </section>
       </div>
     </div>

@@ -10,7 +10,7 @@ const InformationSection: React.FC = () => {
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="bg-gray-100 py-6">
+    <section className="bg-red-100 py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
           <div

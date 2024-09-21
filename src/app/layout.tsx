@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer"; // Dodaj Footer
+const Navbar = dynamic(() => import("./../../components/Navbar"), { ssr: false });
+const Footer = dynamic(() => import("./../../components/Footer"), {ssr: false});
+import dynamic from "next/dynamic";  
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({
       >
         <Navbar />  
         {children}
+        <Footer/>
       </body>
     </html>
   );

@@ -9,41 +9,43 @@ import { SocialIcon } from "react-social-icons";
 const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [navbarStyle, setNavbarStyle] = useState("opacity-100 translate-y-0 bg-black");
-  const [lastScrollY, setLastScrollY] = useState(0);  // Zmienna do zapamiętania pozycji scrolla
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true);  // Widoczność navbara
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Funkcja zmieniająca widoczność navbara na podstawie scrolla
+  // Funkcja do obsługi scrollowania i ukrywania/pokazywania navbara
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+      // Scrollujemy w dół i pozycja scrolla jest wystarczająco duża
+      setIsNavbarVisible(false);
+    } else if (currentScrollY < lastScrollY) {
+      // Scrollujemy w górę
+      setIsNavbarVisible(true);
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 150) {
-        // Scrollujemy w dół, ukrywamy navbar
-        setIsNavbarVisible(false);
-      } else {
-        // Scrollujemy w górę, pokazujemy navbar
-        setIsNavbarVisible(true);
-      }
-
-      // Aktualizacja ostatniej pozycji scrolla
-      setLastScrollY(window.scrollY);
-    };
-
+    // Dodajemy event listener do scrollowania
     window.addEventListener("scroll", handleScroll);
 
     return () => {
+      // Usuwamy event listener przy odmontowaniu komponentu
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
   return (
     <nav
-      className={`fixed w-full h-28 z-10 transition-all duration-300 ease-in-out ${
+      className={`fixed w-full h-28 z-10 transition-transform duration-300 ease-in-out ${
         isNavbarVisible ? "translate-y-0" : "-translate-y-full"
-      } ${navbarStyle}`}
+      } bg-black`}
     >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         {/* Left: Logo */}
@@ -83,49 +85,37 @@ const Navbar: React.FC = () => {
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-16">
-          <Link legacyBehavior href="/o-nas">
-            <a
-              className={`${
-                pathname === "/o-nas"
-                  ? "text-white font-bold"
-                  : "text-gray-50"
-              } hover:text-gray-200 font-semibold`}
-            >
-              O nas
-            </a>
+          <Link
+            href="/o-nas"
+            className={`${
+              pathname === "/o-nas" ? "text-white font-bold" : "text-gray-50"
+            } hover:text-gray-200 font-semibold`}
+          >
+            O nas
           </Link>
-          <Link legacyBehavior href="/uslugi">
-            <a
-              className={`${
-                pathname === "/uslugi"
-                  ? "text-white font-bold"
-                  : "text-gray-50"
-              } hover:text-gray-200 font-semibold`}
-            >
-              Usługi
-            </a>
+          <Link
+            href="/uslugi"
+            className={`${
+              pathname === "/uslugi" ? "text-white font-bold" : "text-gray-50"
+            } hover:text-gray-200 font-semibold`}
+          >
+            Usługi
           </Link>
-          <Link legacyBehavior href="/oferta">
-            <a
-              className={`${
-                pathname === "/oferta"
-                  ? "text-white font-bold"
-                  : "text-gray-50"
-              } hover:text-gray-200 font-semibold`}
-            >
-              Oferta
-            </a>
+          <Link
+            href="/oferta"
+            className={`${
+              pathname === "/oferta" ? "text-white font-bold" : "text-gray-50"
+            } hover:text-gray-200 font-semibold`}
+          >
+            Oferta
           </Link>
-          <Link legacyBehavior href="/kontakt">
-            <a
-              className={`${
-                pathname === "/kontakt"
-                  ? "text-white font-bold"
-                  : "text-gray-50"
-              } hover:text-gray-200 font-semibold`}
-            >
-              Kontakt
-            </a>
+          <Link
+            href="/kontakt"
+            className={`${
+              pathname === "/kontakt" ? "text-white font-bold" : "text-gray-50"
+            } hover:text-gray-200 font-semibold`}
+          >
+            Kontakt
           </Link>
 
           <div className="flex items-center space-x-4">
@@ -140,47 +130,44 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
+        {/* Mobile dropdown menu */}
         {isDropdownOpen && (
           <div className="absolute top-24 left-0 w-full bg-gray-950 text-white md:hidden">
-            <Link legacyBehavior href="/o-nas">
-              <a
-                className={`block py-4 text-center ${
-                  pathname === "/o-nas" ? "font-bold" : ""
-                } hover:bg-gray-700`}
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                O nas
-              </a>
+            <Link
+              href="/o-nas"
+              className={`block py-4 text-center ${
+                pathname === "/o-nas" ? "font-bold" : ""
+              } hover:bg-gray-700`}
+              onClick={() => setIsDropdownOpen(false)}
+            >
+              O nas
             </Link>
-            <Link legacyBehavior href="/uslugi">
-              <a
-                className={`block py-4 text-center ${
-                  pathname === "/uslugi" ? "font-bold" : ""
-                } hover:bg-gray-700`}
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Usługi
-              </a>
+            <Link
+              href="/uslugi"
+              className={`block py-4 text-center ${
+                pathname === "/uslugi" ? "font-bold" : ""
+              } hover:bg-gray-700`}
+              onClick={() => setIsDropdownOpen(false)}
+            >
+              Usługi
             </Link>
-            <Link legacyBehavior href="/oferta">
-              <a
-                className={`block py-4 text-center ${
-                  pathname === "/oferta" ? "font-bold" : ""
-                } hover:bg-gray-700`}
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Oferta
-              </a>
+            <Link
+              href="/oferta"
+              className={`block py-4 text-center ${
+                pathname === "/oferta" ? "font-bold" : ""
+              } hover:bg-gray-700`}
+              onClick={() => setIsDropdownOpen(false)}
+            >
+              Oferta
             </Link>
-            <Link legacyBehavior href="/kontakt">
-              <a
-                className={`block py-4 text-center ${
-                  pathname === "/kontakt" ? "font-bold" : ""
-                } hover:bg-gray-700`}
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Kontakt
-              </a>
+            <Link
+              href="/kontakt"
+              className={`block py-4 text-center ${
+                pathname === "/kontakt" ? "font-bold" : ""
+              } hover:bg-gray-700`}
+              onClick={() => setIsDropdownOpen(false)}
+            >
+              Kontakt
             </Link>
 
             <div className="flex justify-center space-x-4 py-4">

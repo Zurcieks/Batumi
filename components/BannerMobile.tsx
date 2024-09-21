@@ -29,9 +29,11 @@ const BannerMobile: React.FC<BannerProps> = React.memo(({ bannerImage, title, is
           alt="Banner Image"
           className="brightness-50 object-cover object-center w-full h-full"
           objectFit="cover"
+          
           quality={75} // Zmniejszenie jakości
           layout="fill"
-          priority // Priorytetowe ładowanie
+          priority
+         
         />
       </div>
       <div className="absolute inset-0 flex flex-col justify-center items-center animate-fadeDown text-white">

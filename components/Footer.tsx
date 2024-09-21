@@ -1,26 +1,36 @@
-import React from "react";
+import React from 'react';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa'; // Import ikon mediów społecznościowych
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-green-100 rounded-lg shadow-lg m-4 p-6 dark:bg-gray-800">
-      <div className="w-full mx-auto max-w-screen-xl flex flex-col md:flex-row items-center justify-between">
-        <span className="text-sm text-green-600 sm:text-center dark:text-gray-400">
-          © 2023 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. All Rights Reserved.
-        </span>
-        <ul className="flex flex-wrap items-center mt-4 text-sm font-medium text-green-600 dark:text-gray-400 sm:mt-0">
-          <li>
-            <a href="#" className="hover:underline me-4 md:me-6">About</a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Licensing</a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline">Contact</a>
-          </li>
+    <footer className="bg-gray-900 text-gray-300 py-8">
+      {/* Sekcja ikon mediów społecznościowych */}
+      <div className="container mx-auto px-4 text-center mb-6">
+        <div className="flex justify-center space-x-6">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600  hover:text-white">
+            <FaFacebookF />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-white">
+            <FaInstagram/>
+          </a>
+  
+        </div>
+      </div>
+
+      {/* Sekcja z linkami */}
+      <div className="container mx-auto px-4 text-center mb-6">
+        <ul className="flex justify-center space-x-8">
+          <li><a href="/" className="hover:underline text-white hover:text-white">Strona główna</a></li>
+          <li><a href="/o-nas" className="hover:underline text-white hover:text-white">O nas</a></li>
+          <li><a href="/uslugi" className="hover:underline text-white hover:text-white">Usługi</a></li>
+          <li><a href="/oferta" className="hover:underline text-white hover:text-white">Oferta</a></li>
+          <li><a href="/kontakt" className="hover:underline text-white hover:text-white">Kontakt</a></li>
         </ul>
+      </div>
+
+      {/* Sekcja dolna z prawami autorskimi */}
+      <div className="container mx-auto px-4 text-center border-t border-gray-700 pt-4">
+        <p>© 2024 Wszelkie prawa zastrzeżone - Nieruchomości Batumi</p>
       </div>
     </footer>
   );
