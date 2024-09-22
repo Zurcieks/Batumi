@@ -3,17 +3,17 @@ import React, { useState } from "react";
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    imię: "",
     email: "",
-    subject: "",
-    message: "",
+    temat: "",
+    wiadomość: "",
   });
   const [messages, setMessages] = useState({ success: "", error: "" });
   const [errors, setErrors] = useState({
-    name: "",
+    imię: "",
     email: "",
-    subject: "",
-    message: "",
+    temat: "",
+    wiadomość: "",
   });
 
   const isValidEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
@@ -30,14 +30,14 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
 
     const newErrors = {
-      name: !formData.name ? "Imię jest wymagane" : "",
+      imię: !formData.imię ? "Imię jest wymagane" : "",
       email: !formData.email
         ? "Email jest wymagany"
         : !isValidEmail(formData.email)
         ? "Niepoprawny adres email"
         : "",
-      subject: !formData.subject ? "Temat jest wymagany" : "",
-      message: !formData.message ? "Wiadomość jest wymagana" : "",
+        temat: !formData.temat ? "Temat jest wymagany" : "",
+        wiadomość: !formData.wiadomość ? "Wiadomość jest wymagana" : "",
     };
 
     setErrors(newErrors);
@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
 
         {/* Contact Form Section */}
         <form onSubmit={handleSubmit} className="space-y-6 lg:w-1/2">
-          {["name", "email", "subject", "message"].map((field) => (
+          {["imię", "email", "temat", "wiadomość"].map((field) => (
             <div key={field}>
               <input
                 id={field}
