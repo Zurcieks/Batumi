@@ -6,7 +6,7 @@ import dynamic from "next/dynamic"; // Importujemy dynamiczne ładowanie
 // Dynamiczne ładowanie komponentów
 const Banner = dynamic(() => import("../../components/Banner"), { ssr: true });
 const InformationSection = dynamic(() => import("../../pageComponents/HomeComponents/InformationSection"), { ssr: true });
-const AboutSection = dynamic(() => import("../../pageComponents/HomeComponents/AboutSection"), { ssr: true });
+const AboutSection = dynamic(() => import("../../pageComponents/HomeComponents/AboutSection"), { ssr: false});
 const ServiceSection = dynamic(() => import("../../pageComponents/HomeComponents/ServiceSection"), { ssr: false });
 const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponents/InvestingSection"), { ssr: false });
 
