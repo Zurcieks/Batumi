@@ -76,10 +76,10 @@ const Navbar: React.FC = () => {
         {/* Center: Language switcher */}
         <div className="flex justify-center items-center space-x-4">
           <button className="text-white">
-            <ReactCountryFlag countryCode="PL" svg style={{ fontSize: '1.5em' }} /> {/* Polska */}
+            <ReactCountryFlag alt="polish flag" countryCode="PL" svg style={{ fontSize: '1.5em' }} /> {/* Polska */}
           </button>
           <button className="text-white">
-            <ReactCountryFlag countryCode="GB" svg style={{ fontSize: '1.5em' }} /> {/* UK */}
+            <ReactCountryFlag alt="UK flag" countryCode="GB" svg style={{ fontSize: '1.5em' }} /> {/* UK */}
           </button>
         </div>
 

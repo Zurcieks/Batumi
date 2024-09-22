@@ -1,8 +1,10 @@
+"use client"
+import React from "react";
 import { FaPeopleArrows } from "react-icons/fa";
 import { MdPhoneInTalk } from "react-icons/md";
 import { FaBuildingUser } from "react-icons/fa6";
-import React from "react";
 import { useInView } from "react-intersection-observer";
+ 
 
 const items = [
   {

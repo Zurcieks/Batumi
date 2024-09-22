@@ -7,19 +7,18 @@ const Footer: React.FC = () => {
       {/* Sekcja ikon mediów społecznościowych */}
       <div className="container mx-auto px-4 text-center mb-6">
         <div className="flex justify-center space-x-6">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600  hover:text-white">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-white">
             <FaFacebookF />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-white">
-            <FaInstagram/>
+            <FaInstagram />
           </a>
-  
         </div>
       </div>
 
       {/* Sekcja z linkami */}
       <div className="container mx-auto px-4 text-center mb-6">
-        <ul className="flex justify-center space-x-8">
+        <ul className="flex justify-center flex-wrap space-x-4">
           <li><a href="/" className="hover:underline text-white hover:text-white">Strona główna</a></li>
           <li><a href="/o-nas" className="hover:underline text-white hover:text-white">O nas</a></li>
           <li><a href="/uslugi" className="hover:underline text-white hover:text-white">Usługi</a></li>
