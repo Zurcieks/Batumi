@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
 
         {/* Contact Form Section */}
         <form onSubmit={handleSubmit} className="space-y-6 lg:w-1/2">
-          {["Imię", "email", "Temat", "Wiadomość"].map((field) => (
+          {["name", "email", "subject", "message"].map((field) => (
             <div key={field}>
               <input
                 id={field}
