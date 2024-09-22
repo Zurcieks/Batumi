@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState, useCallback } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -22,13 +23,14 @@ const Banner: React.FC<BannerProps> = React.memo(({ bannerImage, title, isButton
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
+  // Render buttons conditionally for different screen sizes
   function renderButtons() {
     return (
-      <div className="mt-12 -ml-6 space-x-5 animate-fadeDown">
+      <div className="mt-12 space-x-5 animate-fadeDown">
         <Link href="/kontakt" className="bg-transparent hover:bg-blue-500 text-white font-semibold py-2 px-4 border border-white rounded">
           Skontaktuj się z nami!
         </Link>
-        <Link href="/o-nas" className="bg-transparent hover:bg-blue-500 text-white font-semibold py-2 px-4 border border-white rounded">
+        <Link href="/o-nas" className="bg-transparent hover:bg-blue-500 text-white font-semibold py-2 px-4 border border-white rounded hidden md:inline-block">
           Dowiedz się więcej!
         </Link>
       </div>
@@ -37,13 +39,14 @@ const Banner: React.FC<BannerProps> = React.memo(({ bannerImage, title, isButton
 
   return (
     <header>
-      <div className="relative w-full h-screen overflow-hidden">
-        <div className="absolute inset-0">
+      <div className="relative w-full h-[500px] md:h-screen overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
           <Image
             src={bannerImage}
-            alt="Banner"
-            className="object-cover w-full h-full brightness-50"
-            layout="fill"
+            alt="Banner Image"
+            className="object-cover object-center w-full h-full brightness-50"
+            quality={100}
+            fill
             priority
           />
         </div>
@@ -51,7 +54,7 @@ const Banner: React.FC<BannerProps> = React.memo(({ bannerImage, title, isButton
           <h1 className="text-3xl sm:text-5xl font-bold text-center">{title}</h1>
           {isButtonShown && renderButtons()}
         </div>
-        <div className="absolute bottom-8 lg:mb-40 flex justify-center animate-fadeDown w-full">
+        <div className="absolute bottom-8 lg:mb-40 flex justify-center w-full">
           <FaArrowDown className="text-white text-4xl animate-bounce" />
         </div>
       </div>

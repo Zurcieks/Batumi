@@ -30,7 +30,7 @@ const BannerMobile: React.FC<BannerProps> = React.memo(({ bannerImage, title, is
           className="brightness-50 object-cover object-center w-full h-full"
           objectFit="cover"
           
-          quality={75} // Zmniejszenie jakości
+          quality={75}  
           layout="fill"
           priority
          

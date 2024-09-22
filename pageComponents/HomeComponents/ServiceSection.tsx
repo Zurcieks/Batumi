@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ServiceImage from "./../../Images/ServiceImage.jpg";
+import ServiceImage from "./../../Images/ServiceImage.webp";
 
 const ServiceSection: React.FC = React.memo(() => {
   return (
@@ -10,8 +10,8 @@ const ServiceSection: React.FC = React.memo(() => {
         src={ServiceImage}
         alt="Usługi"
         className="object-cover w-full h-full brightness-50"
-        layout="fill"
-        quality={75} // Zmniejszona jakość
+        fill
+        quality={75}  
         priority
       />
 

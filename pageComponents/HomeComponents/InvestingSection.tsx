@@ -45,6 +45,7 @@ const InvestingSection: React.FC = () => {
                   alt={industry.imageAlt}
                   width={400}
                   height={250}
+                  quality={75}
                   className="w-full h-72 object-cover"   
                   priority
                 />
