@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Logo from './../Images/logo.png';
 import Link from "next/link";
@@ -12,9 +12,12 @@ const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const dropdownRef = useRef<HTMLDivElement>(null); // Ref do rozwijanego menu
+  const hamburgerRef = useRef<HTMLButtonElement>(null); // Ref do przycisku hamburgera
 
+  // Funkcja otwierająca/zamykająca menu
   const handleDropdownToggle = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    setIsDropdownOpen((prevState) => !prevState);
   };
 
   const handleScroll = () => {
@@ -29,10 +32,25 @@ const Navbar: React.FC = () => {
     setLastScrollY(currentScrollY);
   };
 
+  // Funkcja zamykająca menu, gdy użytkownik kliknie poza nim
+  const handleClickOutside = (event: MouseEvent) => {
+    // Sprawdza, czy kliknięto poza menu i poza hamburgerem
+    if (
+      dropdownRef.current && 
+      !dropdownRef.current.contains(event.target as Node) &&
+      hamburgerRef.current &&
+      !hamburgerRef.current.contains(event.target as Node)
+    ) {
+      setIsDropdownOpen(false); // Zamyka menu
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside); // Nasłuchiwanie na kliknięcia poza menu
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside); // Czyszczenie event listenerów
     };
   }, [lastScrollY]);
 
@@ -58,16 +76,17 @@ const Navbar: React.FC = () => {
         {/* Center: Language switcher */}
         <div className="flex justify-center items-center space-x-4">
           <button className="text-white">
-          <ReactCountryFlag countryCode="PL" svg style={{ fontSize: '1.5em' }} /> {/* Polska */}
+            <ReactCountryFlag countryCode="PL" svg style={{ fontSize: '1.5em' }} /> {/* Polska */}
           </button>
           <button className="text-white">
-          <ReactCountryFlag countryCode="GB" svg style={{ fontSize: '1.5em' }} /> {/* UK */}
+            <ReactCountryFlag countryCode="GB" svg style={{ fontSize: '1.5em' }} /> {/* UK */}
           </button>
         </div>
 
         {/* Mobile menu button */}
         <div className="md:hidden">
           <button
+            ref={hamburgerRef} // Ref do przycisku hamburgera
             onClick={handleDropdownToggle}
             className="text-white focus:outline-none"
           >
@@ -137,7 +156,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile dropdown menu */}
         {isDropdownOpen && (
-          <div className="absolute top-24 left-0 w-full bg-gray-950 text-white md:hidden">
+          <div ref={dropdownRef} className="absolute top-24 left-0 w-full bg-gray-950 text-white md:hidden">
             <Link
               href="/o-nas"
               className={`block py-4 text-center ${

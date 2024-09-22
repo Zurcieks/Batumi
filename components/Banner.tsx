@@ -9,6 +9,7 @@ interface BannerProps {
   bannerImage: StaticImageData;
   title: string;
   isButtonShown: boolean;
+  
 }
 
 const Banner: React.FC<BannerProps> = React.memo(({ bannerImage, title, isButtonShown }) => {
