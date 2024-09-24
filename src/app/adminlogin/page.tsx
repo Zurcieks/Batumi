@@ -12,13 +12,15 @@ const LoginPage = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault(); // Zapobiega przeładowaniu strony
-
+  
     try {
       const response = await axios.post('http://localhost:5000/adminlogin', {
         username,
         password,
+      }, {
+        withCredentials: true // Dodajemy, aby ciasteczka sesji były przesyłane
       });
-
+  
       if (response.data.message === 'Zalogowano pomyślnie.') {
         // Przekierowanie do panelu admina po udanym logowaniu
         router.push('/adminpanel');
