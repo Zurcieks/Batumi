@@ -25,13 +25,11 @@ const LoginPage = () => {
         // Przekierowanie do panelu admina po udanym logowaniu
         router.push('/adminpanel');
       }
-    } catch (error: unknown) {
-      // Rzutujemy błąd na AxiosError, aby bezpiecznie uzyskać dostęp do odpowiedzi
+    } catch (error) {
+      // Obsługa błędów logowania
       if (axios.isAxiosError(error)) {
-        // Obsługa błędów specyficznych dla Axiosa
         setErrorMessage(error.response?.data.message || 'Wystąpił błąd logowania');
       } else {
-        // Ogólny błąd (gdyby był np. problem z połączeniem)
         setErrorMessage('Wystąpił niespodziewany błąd');
       }
     }
