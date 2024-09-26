@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
-import HeroContact from "../../../pageComponents/ContactComponents/HeroContact";
+ 
+const HeroContact = dynamic(() => import("../../../pageComponents/ContactComponents/HeroContact"), {ssr: true});
 const ContactForm = dynamic(() => import("../../../pageComponents/ContactComponents/ContactForm"), { ssr: true });
 
 export const metadata: Metadata = {

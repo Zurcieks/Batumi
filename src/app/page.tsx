@@ -4,7 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic"; // Importujemy dynamiczne ładowanie
 
 // Dynamiczne ładowanie komponentów
-
+const HeroMain = dynamic(() => import("../../components/HeroMain"), {ssr: true})
 const InformationSection = dynamic(() => import("../../pageComponents/HomeComponents/InformationSection"), { ssr: true });
 const AboutSection = dynamic(() => import("../../pageComponents/HomeComponents/AboutSection"), { ssr: false });
 const ServiceSection = dynamic(() => import("../../pageComponents/HomeComponents/ServiceSection"), { ssr: false });
@@ -13,8 +13,8 @@ const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponen
  
 import ContactSection from "../../pageComponents/HomeComponents/ContactSection";
 import { Metadata } from "next";
-import Hero from "../../pageComponents/AboutComponents/Hero";
-import HeroMain from "../../components/HeroMain";
+ 
+
 
 // Definicja metadanych
 export const metadata: Metadata = {
