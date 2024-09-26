@@ -12,6 +12,7 @@ const Hero = () => {
         layout="fill"
         objectFit="cover"
         objectPosition="center"
+        quality={75}
         className="absolute inset-0 z-[-1]" // Obraz na samym spodzie
         priority // Priorytet ładowania dla tła strony
       />

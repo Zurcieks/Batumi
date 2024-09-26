@@ -156,7 +156,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile dropdown menu */}
         {isDropdownOpen && (
-          <div ref={dropdownRef} className="absolute top-24 left-0 w-full bg-gray-950 text-white md:hidden">
+          <div ref={dropdownRef} className="absolute top-24 left-0 w-full bg-black text-white md:hidden">
             <Link
               href="/o-nas"
               className={`block py-4 text-center ${

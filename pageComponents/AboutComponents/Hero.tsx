@@ -12,6 +12,7 @@ const Hero = () => {
         layout="fill"
         objectFit="cover"
         objectPosition="center"
+        quality={75}
         className="absolute inset-0 z-[-1]" // Zastosowanie Tailwind CSS do pozycji
         priority // Użycie priorytetu ładowania, jeśli obraz jest kluczowy dla strony
       />

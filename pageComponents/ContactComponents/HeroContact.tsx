@@ -11,6 +11,7 @@ const Hero = () => {
         alt="Tło kontakt"
         layout="fill"
         objectFit="cover"
+        quality={75}
         objectPosition="center"
         className="absolute inset-0 z-[-1]" // Zastosowanie Tailwind CSS do pozycji
         priority // Obraz ładowany priorytetowo
