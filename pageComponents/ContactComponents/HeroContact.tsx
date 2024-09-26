@@ -1,22 +1,24 @@
 import React from "react";
+import Image from "next/image";
+import ContactImage from "../../public/Contact.jpg"
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[500px] md:h-[80vh] flex flex-col justify-center items-center z-0 text-white">
-      <div
-        className="absolute inset-0 bg-black "
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(/Contact.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      ></div>
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-4 md:mt-12 lg:mt-16 text-center z-10 text-white leading-tight">
+    <div className="relative w-full h-[500px] md:h-[80vh] flex flex-col justify-center items-center text-white z-0">
+      {/* Zoptymalizowany obraz tła */}
+      <Image
+        src={ContactImage}
+        alt="Tło kontakt"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        className="absolute inset-0 z-[-1]" // Zastosowanie Tailwind CSS do pozycji
+        priority // Obraz ładowany priorytetowo
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-4 md:mt-12 lg:mt-16 text-center z-10 leading-tight">
         Napisz do nas!
       </h1>
-      
-
-     
     </div>
   );
 };

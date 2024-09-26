@@ -3,13 +3,19 @@ import React from "react";
 
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 
-import InfoSection from "../../../pageComponents/AboutComponents/InfoSection";
+const InfoSection = dynamic(
+  () => import("../../../pageComponents/AboutComponents/InfoSection"),
+  { ssr: false }
+);
 const Hero = dynamic(
   () => import("../../../pageComponents/AboutComponents/Hero"),
   { ssr: true }
 );
 
-import ContactSection from "../../../pageComponents/HomeComponents/ContactSection";
+const ContactSection = dynamic(
+  () => import("../../../pageComponents/HomeComponents/ContactSection"),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: "InvestinGeorgia - O nas",

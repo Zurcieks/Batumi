@@ -11,7 +11,7 @@ const ServiceSection = dynamic(() => import("../../pageComponents/HomeComponents
 const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponents/InvestingSection"), { ssr: false });
 
  
-import ContactSection from "../../pageComponents/HomeComponents/ContactSection";
+const ContactSection = dynamic(() => import("../../pageComponents/HomeComponents/ContactSection"), {ssr: false})
 import { Metadata } from "next";
  
 

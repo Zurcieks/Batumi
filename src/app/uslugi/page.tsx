@@ -7,9 +7,9 @@ const ServiceHero = dynamic(
   () => import("../../../pageComponents/ServicesComponents/ServiceHero"),
   { ssr: true }
 );
-import ServiceInfo from "../../../pageComponents/ServicesComponents/ServiceInfo";
+const ServiceInfo = dynamic(() => import("../../../pageComponents/ServicesComponents/ServiceInfo"), {ssr: false});
 
-import ContactSection from "../../../pageComponents/HomeComponents/ContactSection";
+const ContactSection = dynamic(() => import("../../../pageComponents/HomeComponents/ContactSection"), {ssr: false});
 
 export const metadata: Metadata = {
   title: "InvestinGeorgia - Uslugi",
