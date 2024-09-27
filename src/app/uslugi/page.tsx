@@ -14,7 +14,7 @@ const ContactSection = dynamic(() => import("../../../pageComponents/HomeCompone
 export const metadata: Metadata = {
   title: "InvestinGeorgia - Uslugi",
   description: "Dowiedz się więcej o naszych usługach!",
-  viewport: "width=device-width, initial-scale=1, user-scalable=no",
+  
 };
 
 const page = () => {
