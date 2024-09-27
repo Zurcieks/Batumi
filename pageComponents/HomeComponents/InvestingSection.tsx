@@ -31,11 +31,12 @@ const industries = [
 const InvestingSection: React.FC = () => {
     return (
       <section className="py-12 bg-blue-50">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-3 text-gray-900">
+        <div className="container mx-auto my-auto text-center">
+        <p className="text-lg text-gray-600 mb-3">Korzyści</p>
+          <h2 className="text-3xl font-bold mb-10 text-gray-900">
             Dlaczego warto inwestować w Batumi?
           </h2>
-          <p className="text-lg text-gray-600 mb-12">Korzyści</p>
+       
   
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (

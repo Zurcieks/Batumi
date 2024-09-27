@@ -50,7 +50,7 @@ const ServiceSection: React.FC = React.memo(() => {
 
             <Link
               href="/uslugi"
-              className="mt-4 inline-block bg-transparent text-white py-2 px-4 hover:bg-blue-500 font-semibold hover:text-white border border-white hover:border-transparent rounded"
+              className="mt-4 inline-block  text-black bg-white py-2 px-4 hover:bg-blue-500 font-semibold hover:text-white border border-white hover:border-transparent rounded"
             >
               Dowiedz się więcej!
             </Link>

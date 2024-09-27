@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutSection: React.FC = () => {
   return (
-    <section className="bg-white py-20 px-4 ">
+    <section className="flex justify-center my-auto items-center bg-white py-20 px-4 h-[70vh]">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-sm font-semibold text-gray-500 uppercase mb-4">
           O nas
@@ -23,7 +23,7 @@ const AboutSection: React.FC = () => {
           himenaeos. Mauris in erat justo.
         </p>
         <Link
-          className="inline-block px-8 py-4 bg-blue-600 text-white font-medium rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
+          className="inline-block px-7 py-3 bg-blue-600 text-white font-medium rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
           href="/o-nas"
         >
           Dowiedz się więcej!

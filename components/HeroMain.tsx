@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[500px] md:h-[100vh] flex flex-col justify-center items-center text-white z-0">
+    <div className="relative w-full h-[500px] md:h-[80vh] flex flex-col justify-center items-center text-white z-0">
     
       <Image
         src={HeroImage}
@@ -27,7 +27,7 @@ const Hero = () => {
         Inwestuj już z nami teraz!
       </p>
 
-      <Link href="/kontakt" className="z-10 mt-8 sm:mt-10 px-6 sm:px-6 py-3 sm:py-2 rounded-full bg-blue-500 text-white text-sm sm:text-base lg:text-lg font-semibold hover:bg-blue-600 transition duration-300">
+      <Link href="/kontakt" className="z-10 mt-8 sm:mt-10 px-6 sm:px-6 py-3 sm:py-2 rounded-full bg-white border-white bg-transparent text-black text-sm sm:text-base lg:text-lg font-semibold hover:bg-blue-600 transition duration-300">
         Skontaktuj się z nami!
       </Link>
     </div>
