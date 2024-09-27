@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "InvestinGeorgia - Strona główna",
   description:
     "Znajdź idealne nieruchomości w Batumi. Oferujemy różnorodne opcje dla każdego. Sprawdź naszą ofertę!",
-  viewport: "width=device-width, initial-scale=1, user-scalable=no",
+ 
 };
 
 const Page: React.FC = () => {

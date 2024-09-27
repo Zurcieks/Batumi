@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
 
       {/* Sekcja dolna z prawami autorskimi */}
       <div className="container mx-auto px-4 text-center border-t border-gray-700 pt-4">
-        <p>© 2024 Wszelkie prawa zastrzeżone - Nieruchomości Batumi</p>
+        <p>© 2024 Wszelkie prawa zastrzeżone - InvestinGeorgia</p>
       </div>
     </footer>
   );
