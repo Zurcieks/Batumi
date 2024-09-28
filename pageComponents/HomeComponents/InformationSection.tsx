@@ -28,7 +28,7 @@ const InformationSection: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="  bg-red-100 py-4  ">
+    <section className="  bg-gray py-4  ">
       <div ref={ref} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
           {items.map((item, index) => (

@@ -40,19 +40,25 @@ const OffersPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
         {offers.map((offer) => (
-          <div key={offer._id} className="text-center border p-4 rounded-lg shadow-md">
+          <div 
+            key={offer._id} 
+            className="border rounded-lg overflow-hidden shadow-md w-full max-w-sm mx-auto"
+          >
             <img
               src={`http://localhost:5000/${offer.imageUrl}`}
               alt={offer.title}
-              className="w-full h-64 object-cover mb-4 rounded-lg"
+              className="w-full h-48 object-cover"
             />
-            <h3 className="font-semibold text-lg">{offer.title}</h3>
-            <p className="text-gray-600">{offer.price} zł za m², {offer.description}</p>
-            <button className="border-2 border-red-500 text-red-500 p-2 mt-4 hover:bg-red-500 hover:text-white transition">
-              Zobacz szczegóły
-            </button>
+            <div className="p-4">
+              <p className="text-blue-500 text-xl font-semibold mb-2">${offer.price}</p>
+              <h3 className="text-lg font-bold text-gray-800 mb-2">{offer.title}</h3>
+              <p className="text-gray-600 mb-4">{offer.description}</p>
+              <button className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition">
+                Zobacz szczegóły
+              </button>
+            </div>
           </div>
         ))}
       </div>

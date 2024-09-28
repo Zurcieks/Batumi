@@ -282,7 +282,7 @@ const Admin = () => {
                 alt={offer.title}
                 className="w-full h-40 object-cover mb-2"
               />
-              <h2 className="text-xl">{offer.title}</h2>
+              <h2 className="text-xl ">{offer.title}</h2>
               <p>{offer.description}</p>
               <p className="font-bold">${offer.price}</p>
               <div className="mt-2 flex">

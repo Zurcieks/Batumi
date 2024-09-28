@@ -30,12 +30,12 @@ const Page: React.FC = () => {
       <header>
       <HeroMain/>
       </header>
-      <section className="bg-red-100">
-        <InformationSection />\
+      <section className="bg-blue-50">
+        <InformationSection /> 
         <hr className="h-px  bg-black border-0 "/>
       </section>
   
-      <section>
+      <section className="bg-blue-50">
         <AboutSection />
       </section>
       <section>
