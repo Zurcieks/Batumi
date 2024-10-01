@@ -1,23 +1,18 @@
 import React from "react";
-import Image from "next/image";
-import HeroImage from "../public/HeaderImg.jpg"
+ 
 import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[500px] md:h-[100vh] flex flex-col justify-center items-center text-white z-0">
+    <div className="relative w-full h-[700px] md:h-[100vh] flex flex-col justify-center items-center text-white z-0">
     
-      <Image
-        src={HeroImage}
+      <img
+        src="/HeaderImg.jpg"// Use .src if using Next.js static files
         alt="Tło nieruchomości w Gruzji"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        quality={75}
-        className="absolute inset-0 z-[-1]" // Obraz na samym spodzie
-        priority // Priorytet ładowania dla tła strony
+        className="absolute inset-0 z-[-1] w-full h-full object-cover" // Full width and height with cover
+        style={{ filter: "brightness(0.9)" }} // Darken the image for better text visibility
       />
-      {/* Gradient na tle */}
+      {/* Gradient on background */}
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-4 md:mt-12 lg:mt-16 text-center z-10 leading-tight">
@@ -27,7 +22,10 @@ const Hero = () => {
         Inwestuj już z nami teraz!
       </p>
 
-      <Link href="/kontakt" className="z-10 mt-8 sm:mt-10 px-6 sm:px-6 py-3 sm:py-2 rounded-full bg-white border-white bg-transparent text-black text-sm sm:text-base lg:text-lg font-semibold hover:bg-blue-600 transition duration-300">
+      <Link 
+        href="/kontakt" 
+        className="z-10 mt-8 sm:mt-10 px-6 sm:px-6 py-3 sm:py-2 rounded-full bg-white border-white bg-transparent text-black text-sm sm:text-base lg:text-lg font-semibold hover:bg-blue-600 transition duration-300"
+      >
         Skontaktuj się z nami!
       </Link>
     </div>

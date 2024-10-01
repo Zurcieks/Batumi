@@ -54,7 +54,7 @@ const OffersPage: React.FC = () => {
             <div className="p-4">
               <p className="text-blue-500 text-xl font-semibold mb-2">${offer.price}</p>
               <h3 className="text-lg font-bold text-gray-800 mb-2">{offer.title}</h3>
-              <p className="text-gray-600 mb-4">{offer.description}</p>
+              <p className="text-gray-600 mb-4  ">{offer.description}</p>
               <button className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition">
                 Zobacz szczegóły
               </button>

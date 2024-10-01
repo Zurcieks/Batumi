@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 const services = [
@@ -38,22 +37,17 @@ const ServiceInfo: React.FC = () => {
   return (
     <section className="py-16 bg-gray-100">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="flex flex-col items-center">
           {/* Lewa kolumna z tekstem */}
-          <div className="flex flex-col justify-center">
-            <h2 className="text-3xl font-bold text-gray-800 text-center lg:text-left">We Provide A Lot of Cool Services</h2>
-            <p className="text-gray-600 mt-4 text-center lg:text-left max-w-md mx-auto lg:mx-0">
+          <div className="flex flex-col justify-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-800 text-center">We Provide A Lot of Cool Services</h2>
+            <p className="text-gray-600 mt-4 text-center max-w-md mx-auto">
               Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
             </p>
-            <div className="text-center lg:text-left mt-6"> {/* Dodano mt-6 */}
-              <Link href="/kontakt" className=" bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 transition">
-                Zobacz naszą oferte!
-              </Link>
-            </div>
           </div>
 
-          {/* Prawa kolumna z usługami */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mx-auto">
+          {/* Kafelki w dwóch rzędach i trzech kolumnach */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <div
                 key={index}

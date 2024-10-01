@@ -13,6 +13,7 @@ const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponen
  
 const ContactSection = dynamic(() => import("../../pageComponents/HomeComponents/ContactSection"), {ssr: false})
 import { Metadata } from "next";
+import Faq from "../../pageComponents/HomeComponents/Faq";
  
 
 
@@ -30,9 +31,8 @@ const Page: React.FC = () => {
       <header>
       <HeroMain/>
       </header>
-      <section className="bg-blue-50">
+      <section className="">
         <InformationSection /> 
-        <hr className="h-px  bg-black border-0 "/>
       </section>
   
       <section className="bg-blue-50">
@@ -43,6 +43,9 @@ const Page: React.FC = () => {
       </section>
       <section>
         <InvestingSection />
+      </section>
+      <section>
+        <Faq/>
       </section>
       <section>
         <ContactSection />

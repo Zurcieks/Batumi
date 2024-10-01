@@ -1,48 +1,59 @@
-"use client"
+"use client";
 import React from "react";
-import { FaPeopleArrows } from "react-icons/fa";
-import { MdPhoneInTalk } from "react-icons/md";
-import { FaBuildingUser } from "react-icons/fa6";
-import { useInView } from "react-intersection-observer";
- 
-
-const items = [
-  {
-    icon: <FaPeopleArrows className="text-3xl text-gray-800 mr-4 md:text-4xl" />,
-    text: 'Prowadzimy Cię "za rękę" przez cały proces kupna nieruchomości',
-    transformClass: "translate-x-10", // na prawo
-  },
-  {
-    icon: <MdPhoneInTalk className="text-3xl text-gray-800 mr-4 md:text-4xl" />,
-    text: "Rozmawiasz z nami tylko po polsku",
-    transformClass: "translate-y-10", // od góry
-  },
-  {
-    icon: <FaBuildingUser className="text-3xl text-gray-800 mr-4 md:text-4xl" />,
-    text: "0% prowizji, kupujesz mieszkanie bezpośrednio od dewelopera",
-    transformClass: "-translate-x-10", // na lewo
-  }
-];
+import Link from "next/link";
 
 const InformationSection: React.FC = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
-    <section className="  bg-gray py-4  ">
-      <div ref={ref} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`flex items-center transform transition-transform duration-500 ${inView ? "translate-x-0 translate-y-0 opacity-100" : `${item.transformClass} opacity-0`}`}
-            >
-              {item.icon}
-              <p className="text-sm md:text-lg font-semibold">{item.text}</p>
+    <div className="relative w-full flex justify-center mt-[-5rem] md:mt-[-7rem]">
+      <div className="w-full px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row flex-wrap justify-center max-w-screen-lg gap-4">
+        {[
+          {
+            number: "01.",
+            title: "Witamy w Batumi!",
+            description:
+              "Oferujemy bogaty wybór nieruchomości nad Morzem Czarnym. Nasz zespół mówi w języku polskim, angielskim, gruzińskim i rosyjskim, aby spełnić wszystkie Twoje potrzeby.",
+            linkText: "Zobacz nasze usługi!",
+            href: "#",
+          },
+          {
+            number: "02.",
+            title: "Dlaczego Batumi?",
+            description:
+              "Batumi to idealne miejsce na inwestycje. Doskonała lokalizacja, rozwijająca się infrastruktura i piękne plaże sprawiają, że jest to miejsce na Twoje wymarzone życie.",
+            linkText: "Dowiedz się więcej!",
+            href: "#",
+          },
+          {
+            number: "03.",
+            title: "Nasza oferta!",
+            description:
+              "Oferujemy kompleksową obsługę w zakresie zakupu i wynajmu nieruchomości. Nasi eksperci są dostępni w wielu językach, aby pomóc Ci w każdej sprawie.",
+            linkText: "Zobacz naszą ofertę!",
+            href: "#",
+          },
+        ].map((item, index) => (
+          <div
+            key={index}
+            className={`bg-[#f3f4ef] p-4 md:p-8 shadow-md border border-black w-full md:w-[30%] rounded-lg flex flex-col justify-between`}
+          >
+            <div>
+              <div className="text-2xl md:text-3xl text-gray-400 font-bold">
+                {item.number}
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-black mt-2 md:mt-4">
+                {item.title}
+              </h3>
+              <p className="text-gray-700 mt-2 md:mt-4">{item.description}</p>
             </div>
-          ))}
-        </div>
+            <Link legacyBehavior href={item.href}>
+              <a className="text-green-600 font-semibold mt-4 md:mt-6 inline-block hover:underline">
+                {item.linkText} &rarr;
+              </a>
+            </Link>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

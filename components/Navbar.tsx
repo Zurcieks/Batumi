@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Logo from './../Images/logo.png';
+ 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialIcon } from "react-social-icons";
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
         {/* Left: Logo */}
         <Link href="/">
           <Image
-            src={Logo}
+            src='/logo.png'
             alt="Logo"
             width={150}
             height={150}

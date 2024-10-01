@@ -1,64 +1,99 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import ServiceImage from "./../../Images/ServiceImage.webp";
+import Image from 'next/image';
+import Head from 'next/head';
 
-const ServiceSection: React.FC = React.memo(() => {
+const HomePageHero = () => {
   return (
-    <section className="relative w-full h-[100vh] my-auto bg-black text-white flex justify-center items-center">
-      <Image
-        src={ServiceImage}
-        alt="Usługi"
-        className="object-cover w-full h-full brightness-50"
-        fill
-        quality={75}  
-        priority
-      />
+    <>
+      <Head>
+        <title>Kupno nieruchomości w Gruzji - GoldRealEstate</title>
+        <meta
+          name="description"
+          content="GoldRealEstate to firma ułatwiająca kupno nieruchomości w Gruzji, oferując pełne wsparcie w procesie zakupu, od umowy po odbiór kluczy."
+        />
+        <meta
+          name="keywords"
+          content="kupno nieruchomości, Gruzja, Batumi, inwestycje, GoldRealEstate"
+        />
+      </Head>
+      <div className="relative w-full min-h-screen flex flex-col justify-center items-center text-white z-0 overflow-hidden p-4">
+        <div
+          className="absolute inset-0 bg-black z-10"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/ServiceImage.jpg)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
 
-      <div className="relative z-0 container mx-auto px-4 py-16 flex flex-col lg:flex-row items-center text-white">
-        <div className="lg:w-1/2 lg:pr-10 flex flex-col items-center lg:items-start">
-          <h2 className="text-sm sm:text-center text-gray-50 font-semibold md:text-left md:mb-4 mb-8 sm:mb-4">
-            Usługi
-          </h2>
-
-          <p className="text-lg mb-6">
-            We are the industry heads and produce the most reliable and trendy
-            solution you are looking for.
+        <div className="relative z-20 text-center max-w-4xl w-full mx-auto p-4">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight max-w-lg mx-auto">
+            Jak ułatwimy Ci kupno nieruchomości w Gruzji?
+          </h1>
+          <p className="text-sm md:text-lg text-white mb-4 md:mb-6 leading-relaxed max-w-lg mx-auto">
+            Wiemy, że dla osoby z Polski inwestycja na rynku zagranicznym jest dużym wyzwaniem...
           </p>
 
-          {[
-            "Roller Chain Drives",
-            "Motors & Gear Motors",
-            "Inductive/Capacitive Sensors",
-          ].map((service, index) => (
-            <div key={index} className="mb-4">
-              <h3 className="text-xl font-semibold">{service}</h3>
-              <p className="text-sm text-gray-300">
-                A short product description that highlights the main usage and
-                features of the product.
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div className="bg-transparent p-4">
+              <Image
+                src="/icon1.png"
+                alt="Zdalna umowa"
+                width={50}
+                height={50}
+                className="mx-auto"
+              />
+              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
+                Umowa zakupu może być zawarta na miejscu w Batumi lub ZDALNIE ONLINE.
               </p>
             </div>
-          ))}
-        </div>
-
-        <div className="lg:w-1/2 mt-10 lg:mt-0">
-          <div className="bg-transparent bg-opacity-75 p-6 rounded-lg lg:w-2/3">
-            <h2 className="text-3xl font-bold mb-4">
-              The only place where you'll get the perfect solution for all your
-              industry needs.
-            </h2>
-
-            <Link
-              href="/uslugi"
-              className="mt-4 inline-block  text-black bg-white py-2 px-4 hover:bg-blue-500 font-semibold hover:text-white border border-white hover:border-transparent rounded"
-            >
-              Dowiedz się więcej!
-            </Link>
+            <div className="bg-transparent p-4">
+              <Image
+                src="/icon2.png"
+                alt="Aspekt prawny"
+                width={50}
+                height={50}
+                className="mx-auto"
+              />
+              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
+                Przeprowadzamy przez cały aspekt prawny zakupu w j. polskim.
+              </p>
+            </div>
+            <div className="bg-transparent p-4">
+              <Image
+                src="/icon3.png"
+                alt="Przejazd na lotnisko"
+                width={50}
+                height={50}
+                className="mx-auto"
+              />
+              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
+                Organizujemy przejazd z i na lotnisko.
+              </p>
+            </div>
+            <div className="bg-transparent p-4">
+              <Image
+                src="/icon4.png"
+                alt="Pełne wsparcie"
+                width={50}
+                height={50}
+                className="mx-auto"
+              />
+              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
+                Udzielamy pełnego wsparcia.
+              </p>
+            </div>
           </div>
+
+          <a
+            href="/Contact"
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg z-20 text-lg font-semibold"
+          >
+            Brzmi dobrze! Chcę wiedzieć więcej
+          </a>
         </div>
       </div>
-    </section>
+    </>
   );
-});
+};
 
-export default ServiceSection;
+export default HomePageHero;

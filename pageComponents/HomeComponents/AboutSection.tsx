@@ -1,89 +1,98 @@
-// components/HowItWorksSection.tsx
-
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import AboutImage from "../../Images/dupa.png"
+import {
+  LocationMarkerIcon,
+  TrendingUpIcon,
+  DocumentTextIcon,
+} from "@heroicons/react/outline"; // Importing icons
 
-const HowItWorksSection: React.FC = () => {
+const AboutSection: React.FC = () => {
   return (
-    <section className="container bg-blue-50 mx-auto  py-12 md:py-16 lg:py-24">
-      <div className="flex  flex-col lg:flex-row items-center lg:space-x-8">
-        {/* Left Image */}
-        <div className="flex-shrink-0 w-full lg:w-1/2 mb-8 lg:mb-0">
-          <Image
-            src={AboutImage} // Replace with your image path
-            alt="Kid Illustration"
-            width={500}
-            height={500}
-            className="object-contain mx-auto"
-          />
-        </div>
-
-        {/* Right Content */}
-        <div className="lg:w-1/2">
-          <p className="text-sm text-center md:text-left text-gray font-semibold ">
-            O nas
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-gray-800 mb-6 leading-tight">
-            Czym się zajmujemy?
+    <section className="bg-[#f4f5ec] py-16 px-4 md:px-8 lg:px-16">
+      <div className="max-w-7xl text-center md:text-left mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        {/* Tekst */}
+        <div>
+          <h2 className="text-4xl font-bold text-green-900 mb-4">
+            Dlaczego warto inwestować w Batumi!?
           </h2>
-          <p className="text-gray-600 mb-8 text-center md:text-left">
-            Nasza platforma została stworzona z myślą o wygodzie i
-            bezpieczeństwie. W kilku prostych krokach znajdziesz odpowiednią
-            nianię dla swojego dziecka. Proces rezerwacji jest szybki,
-            przejrzysty i dostosowany do Twoich potrzeb.
+          <p className="text-lg text-gray-700 mb-6">
+            Batumi to dynamicznie rozwijające się miasto nad Morzem Czarnym,
+            znane z pięknych plaż, nowoczesnej architektury oraz bogatej
+            kultury. Oferujemy szeroki wybór nieruchomości, które spełnią
+            oczekiwania zarówno inwestorów, jak i osób szukających wymarzonego
+            miejsca do życia lub wypoczynku.
           </p>
 
-          <div className="space-y-8 ">
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0">
-                <span className="bg-orange-100 p-3 rounded-full text-orange-500">
-                  {/* Icon can be SVG or any library icon */}
-                </span>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold text-gray-800 mb-2 ">
-                  Wybierz nianię i zobacz jej dostępność
-                </h4>
-                <p className="text-gray-600">
-                  Wszystkie nianie na naszej platformie są zweryfikowane i
-                  odpowiednio przygotowane do opieki nad dzieckiem, więc możesz
-                  mieć pewność, że Twoje dziecko jest w bezpiecznych rękach.
-                  Wybierz nianię, która najlepiej odpowiada wymaganiom Twojej
-                  rodziny.
-                </p>
-              </div>
+          {/* New Bullet Points Section with Icons */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-[#f4f5ec] rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:shadow-lg">
+              <LocationMarkerIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-green-900 mb-2">
+                Atrakcyjna lokalizacja
+              </h3>
+              <p className="text-gray-700">
+                Batumi to miejsce, które przyciąga turystów i inwestorów.
+              </p>
             </div>
-
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0">
-                <span className="bg-orange-100 p-3 rounded-full text-orange-500">
-                  {/* Icon */}
-                </span>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                  Dokończ płatność i poczekaj na potwierdzenie
-                </h4>
-                <p className="text-gray-600">
-                  Po wyborze niani wystarczy, że dokonasz szybkiej płatności
-                  przez naszą platformę. Po potwierdzeniu rezerwacji niania
-                  przyjdzie w wybranym terminie i zajmie się Twoim dzieckiem.
-                  Spokojnie czekaj na przyjście opiekunki, a my zajmiemy się
-                  resztą.
-                </p>
-              </div>
+            <div className="bg-[#f4f5ec] rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:shadow-lg">
+              <TrendingUpIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-green-900 mb-2">
+                Rosnący rynek
+              </h3>
+              <p className="text-gray-700">
+                Stale rozwijający się rynek nieruchomości gwarantuje zyski.
+              </p>
+            </div>
+            <div className="bg-[#f4f5ec] rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:shadow-lg">
+              <DocumentTextIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-green-900 mb-2">
+                Przyjazne przepisy
+              </h3>
+              <p className="text-gray-700">
+                Zrozumiałe i korzystne regulacje prawne dla inwestorów.
+              </p>
+            </div>
+            <div className="bg-[#f4f5ec] rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:shadow-lg">
+              <DocumentTextIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-green-900 mb-2">
+                Przyjazne przepisy
+              </h3>
+              <p className="text-gray-700">
+                Zrozumiałe i korzystne regulacje prawne dla inwestorów.
+              </p>
             </div>
           </div>
+        </div>
 
-          <div className="flex justify-center md:justify-start mt-8">
-            <Link
-              href="/o-nas"
-              className="bg-blue-500 text-white py-3  px-6 rounded-lg hover:bg-blue-400 transition  md:mx-0   md:text-left inline-block w-fit"
-            >
-              Dowiedz się więcej!
-            </Link>
+        {/* Obrazy */}
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+          {/* Użyj transformacji, aby uzyskać skos */}
+          <div className="transform rotate-1 rounded-2xl overflow-hidden">
+            <img
+              src="/BatumiBeach.jpg"
+              alt="Batumi Beach"
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+            />
+          </div>
+          <div className="transform -rotate-1 rounded-2xl overflow-hidden">
+            <img
+              src="/BatumiBeach2.jpg"
+              alt="Batumi Beach 1"
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+            />
+          </div>
+          <div className="transform rotate-1 rounded-2xl overflow-hidden">
+            <img
+              src="/BatumiGeorgia.jpg"
+              alt="Batumi Beach 2"
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+            />
+          </div>
+          <div className="transform -rotate-1 rounded-2xl overflow-hidden">
+            <img
+              src="/BatumiBeach4.jpg"
+              alt="Batumi Beach 3"
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+            />
           </div>
         </div>
       </div>
@@ -91,4 +100,4 @@ const HowItWorksSection: React.FC = () => {
   );
 };
 
-export default HowItWorksSection;
+export default AboutSection;
