@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const InformationSection: React.FC = () => {
   return (
-    <div className="relative w-full flex justify-center mt-[-5rem] md:mt-[-7rem]">
-      <div className="w-full px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row flex-wrap justify-center max-w-screen-lg gap-4">
+    <div className="w-full  bg-white flex justify-center mt-[-5rem] md:mt-[-7rem] text-center md:text-left">
+      <div className="w-full  px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row flex-wrap justify-center max-w-screen-lg z-10 gap-4">
         {[
           {
             number: "01.",
@@ -13,7 +13,7 @@ const InformationSection: React.FC = () => {
             description:
               "Oferujemy bogaty wybór nieruchomości nad Morzem Czarnym. Nasz zespół mówi w języku polskim, angielskim, gruzińskim i rosyjskim, aby spełnić wszystkie Twoje potrzeby.",
             linkText: "Zobacz nasze usługi!",
-            href: "#",
+            href: "/uslugi",
           },
           {
             number: "02.",
@@ -21,7 +21,7 @@ const InformationSection: React.FC = () => {
             description:
               "Batumi to idealne miejsce na inwestycje. Doskonała lokalizacja, rozwijająca się infrastruktura i piękne plaże sprawiają, że jest to miejsce na Twoje wymarzone życie.",
             linkText: "Dowiedz się więcej!",
-            href: "#",
+            href: "/o-nas",
           },
           {
             number: "03.",
@@ -29,12 +29,12 @@ const InformationSection: React.FC = () => {
             description:
               "Oferujemy kompleksową obsługę w zakresie zakupu i wynajmu nieruchomości. Nasi eksperci są dostępni w wielu językach, aby pomóc Ci w każdej sprawie.",
             linkText: "Zobacz naszą ofertę!",
-            href: "#",
+            href: "/oferta",
           },
         ].map((item, index) => (
           <div
             key={index}
-            className={`bg-[#f3f4ef] p-4 md:p-8 shadow-md border border-black w-full md:w-[30%] rounded-lg flex flex-col justify-between`}
+            className={`bg-white p-4 md:p-8 shadow-md border border-black w-full md:w-[30%] rounded-lg flex flex-col justify-between`}
           >
             <div>
               <div className="text-2xl md:text-3xl text-gray-400 font-bold">

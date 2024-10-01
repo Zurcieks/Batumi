@@ -1,7 +1,6 @@
-"use client";
+"use client"
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
- 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialIcon } from "react-social-icons";
@@ -34,9 +33,8 @@ const Navbar: React.FC = () => {
 
   // Funkcja zamykająca menu, gdy użytkownik kliknie poza nim
   const handleClickOutside = (event: MouseEvent) => {
-    // Sprawdza, czy kliknięto poza menu i poza hamburgerem
     if (
-      dropdownRef.current && 
+      dropdownRef.current &&
       !dropdownRef.current.contains(event.target as Node) &&
       hamburgerRef.current &&
       !hamburgerRef.current.contains(event.target as Node)
@@ -56,7 +54,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full h-28 z-10 transition-transform duration-300 ease-in-out ${
+      className={`fixed w-full h-28 z-30 transition-transform duration-300 ease-in-out ${
         isNavbarVisible ? "translate-y-0" : "-translate-y-full"
       } bg-black`}
     >
@@ -76,17 +74,17 @@ const Navbar: React.FC = () => {
         {/* Center: Language switcher */}
         <div className="flex justify-center items-center space-x-4">
           <button className="text-white">
-            <ReactCountryFlag alt="polish flag" countryCode="PL" svg style={{ fontSize: '1.5em' }} /> {/* Polska */}
+            <ReactCountryFlag alt="polish flag" countryCode="PL" svg style={{ fontSize: '1.5em' }} />
           </button>
           <button className="text-white">
-            <ReactCountryFlag alt="UK flag" countryCode="GB" svg style={{ fontSize: '1.5em' }} /> {/* UK */}
+            <ReactCountryFlag alt="UK flag" countryCode="GB" svg style={{ fontSize: '1.5em' }} />
           </button>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile and tablet menu button */}
         <div className="md:hidden">
           <button
-            ref={hamburgerRef} // Ref do przycisku hamburgera
+            ref={hamburgerRef}
             onClick={handleDropdownToggle}
             className="text-white focus:outline-none"
           >
@@ -108,101 +106,29 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex items-center space-x-16">
-          <Link
-            href="/o-nas"
-            className={`${
-              pathname === "/o-nas" ? "text-white font-bold" : "text-gray-50"
-            } hover:text-gray-200 font-semibold`}
-          >
-            O nas
-          </Link>
-          <Link
-            href="/uslugi"
-            className={`${
-              pathname === "/uslugi" ? "text-white font-bold" : "text-gray-50"
-            } hover:text-gray-200 font-semibold`}
-          >
-            Usługi
-          </Link>
-          <Link
-            href="/oferta"
-            className={`${
-              pathname === "/oferta" ? "text-white font-bold" : "text-gray-50"
-            } hover:text-gray-200 font-semibold`}
-          >
-            Oferta
-          </Link>
-          <Link
-            href="/kontakt"
-            className={`${
-              pathname === "/kontakt" ? "text-white font-bold" : "text-gray-50"
-            } hover:text-gray-200 font-semibold`}
-          >
-            Kontakt
-          </Link>
+        <div className="hidden md:flex items-center space-x-12 ml-auto">
+          <Link href="/o-nas" className={`${pathname === "/o-nas" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>O nas</Link>
+          <Link href="/uslugi" className={`${pathname === "/uslugi" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Usługi</Link>
+          <Link href="/oferta" className={`${pathname === "/oferta" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Oferta</Link>
+          <Link href="/kontakt" className={`${pathname === "/kontakt" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Kontakt</Link>
 
           <div className="flex items-center space-x-4">
-            <SocialIcon
-              url="https://www.facebook.com"
-              style={{ height: 35, width: 35 }}
-            />
-            <SocialIcon
-              url="https://www.instagram.com"
-              style={{ height: 35, width: 35 }}
-            />
+            <SocialIcon url="https://www.facebook.com" style={{ height: 35, width: 35 }} />
+            <SocialIcon url="https://www.instagram.com" style={{ height: 35, width: 35 }} />
           </div>
         </div>
 
         {/* Mobile dropdown menu */}
         {isDropdownOpen && (
           <div ref={dropdownRef} className="absolute top-24 left-0 w-full bg-black text-white md:hidden">
-            <Link
-              href="/o-nas"
-              className={`block py-4 text-center ${
-                pathname === "/o-nas" ? "font-bold" : ""
-              } hover:bg-gray-700`}
-              onClick={() => setIsDropdownOpen(false)}
-            >
-              O nas
-            </Link>
-            <Link
-              href="/uslugi"
-              className={`block py-4 text-center ${
-                pathname === "/uslugi" ? "font-bold" : ""
-              } hover:bg-gray-700`}
-              onClick={() => setIsDropdownOpen(false)}
-            >
-              Usługi
-            </Link>
-            <Link
-              href="/oferta"
-              className={`block py-4 text-center ${
-                pathname === "/oferta" ? "font-bold" : ""
-              } hover:bg-gray-700`}
-              onClick={() => setIsDropdownOpen(false)}
-            >
-              Oferta
-            </Link>
-            <Link
-              href="/kontakt"
-              className={`block py-4 text-center ${
-                pathname === "/kontakt" ? "font-bold" : ""
-              } hover:bg-gray-700`}
-              onClick={() => setIsDropdownOpen(false)}
-            >
-              Kontakt
-            </Link>
+            <Link href="/o-nas" className={`block py-4 text-center ${pathname === "/o-nas" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>O nas</Link>
+            <Link href="/uslugi" className={`block py-4 text-center ${pathname === "/uslugi" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>Usługi</Link>
+            <Link href="/oferta" className={`block py-4 text-center ${pathname === "/oferta" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>Oferta</Link>
+            <Link href="/kontakt" className={`block py-4 text-center ${pathname === "/kontakt" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>Kontakt</Link>
 
             <div className="flex justify-center space-x-4 py-4">
-              <SocialIcon
-                url="https://www.facebook.com"
-                style={{ height: 35, width: 35 }}
-              />
-              <SocialIcon
-                url="https://www.instagram.com"
-                style={{ height: 35, width: 35 }}
-              />
+              <SocialIcon url="https://www.facebook.com" style={{ height: 35, width: 35 }} />
+              <SocialIcon url="https://www.instagram.com" style={{ height: 35, width: 35 }} />
             </div>
           </div>
         )}

@@ -1,7 +1,10 @@
-import Image from 'next/image';
-import Head from 'next/head';
+import Image from "next/image";
+import Head from "next/head";
+import Link from "next/link";
+// Importowanie ikon
+import { PhoneIcon, DocumentIcon, HomeIcon } from '@heroicons/react/outline';
 
-const HomePageHero = () => {
+const ServiceSection = () => {
   return (
     <>
       <Head>
@@ -25,75 +28,76 @@ const HomePageHero = () => {
           }}
         ></div>
 
-        <div className="relative z-20 text-center max-w-4xl w-full mx-auto p-4">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight max-w-lg mx-auto">
-            Jak ułatwimy Ci kupno nieruchomości w Gruzji?
+        <div className="relative z-20 text-center max-w-3xl md:max-w-5xl w-full mx-auto space-y-10 ">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white leading-tight">
+            Z nami odnajdziesz swoją nieruchomość!
           </h1>
-          <p className="text-sm md:text-lg text-white mb-4 md:mb-6 leading-relaxed max-w-lg mx-auto">
-            Wiemy, że dla osoby z Polski inwestycja na rynku zagranicznym jest dużym wyzwaniem...
+          <p className="text-md md:text-lg lg:text-xl text-white mb-4 leading-relaxed">
+            Oferujemy Ci szeroki wybór nieruchomości idealnie dopasowanych do
+            Twojego stylu życia i finansów. Skontaktuj się z nami, aby
+            rozpocząć!
           </p>
+          
+ 
+            
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12    ">
+            {/* Contact Section */}
+            <div className="flex flex-col items-center h-full">
+              <PhoneIcon className="h-10 w-10 text-white mb-2" /> {/* Ikona telefonu */}
+              <h3 className="text-xl md:text-2xl lg:text-2xl font-bold">
+                Skontaktuj się z nami
+              </h3>
+              <p className="text-sm md:text-md lg:text-lg text-center flex-grow mb-2">
+                Nasz zespół doświadczonych agentów pomoże Ci znaleźć mieszkanie
+                idealnie dopasowane do Twoich potrzeb i oczekiwań. Analizujemy
+                Twoje preferencje, lokalizację oraz budżet, aby przedstawić
+                najlepsze oferty.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div className="bg-transparent p-4">
-              <Image
-                src="/icon1.png"
-                alt="Zdalna umowa"
-                width={50}
-                height={50}
-                className="mx-auto"
-              />
-              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
-                Umowa zakupu może być zawarta na miejscu w Batumi lub ZDALNIE ONLINE.
+            {/* Offer Section */}
+            <div className="flex flex-col items-center h-full ">
+              <DocumentIcon className="h-10 w-10 text-white mb-2" /> {/* Ikona dokumentu */}
+              <h3 className="text-xl md:text-2xl lg:text-2xl font-bold">
+                Nasze oferty
+              </h3>
+              <p className="text-sm md:text-md lg:text-lg text-center flex-grow mb-2">
+                Oferujemy szeroki wachlarz nieruchomości, które są starannie
+                selekcjonowane, aby odpowiadały Twoim wymaganiom. Zespół
+                ekspertów przygotuje propozycje dostosowane do Twoich
+                preferencji i oczekiwań, zapewniając kompleksową obsługę.
               </p>
             </div>
-            <div className="bg-transparent p-4">
-              <Image
-                src="/icon2.png"
-                alt="Aspekt prawny"
-                width={50}
-                height={50}
-                className="mx-auto"
-              />
-              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
-                Przeprowadzamy przez cały aspekt prawny zakupu w j. polskim.
-              </p>
-            </div>
-            <div className="bg-transparent p-4">
-              <Image
-                src="/icon3.png"
-                alt="Przejazd na lotnisko"
-                width={50}
-                height={50}
-                className="mx-auto"
-              />
-              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
-                Organizujemy przejazd z i na lotnisko.
-              </p>
-            </div>
-            <div className="bg-transparent p-4">
-              <Image
-                src="/icon4.png"
-                alt="Pełne wsparcie"
-                width={50}
-                height={50}
-                className="mx-auto"
-              />
-              <p className="mt-4 text-sm md:text-base lg:text-lg text-white">
-                Udzielamy pełnego wsparcia.
+
+            {/* Purchase Section */}
+            <div className="flex flex-col items-center h-full">
+              <HomeIcon className="h-10 w-10 text-white mb-2" /> {/* Ikona domu */}
+              <h3 className="text-xl md:text-2xl lg:text-2xl font-bold">
+                Proces zakupu
+              </h3>
+              <p className="text-sm md:text-md lg:text-lg text-center flex-grow mb-2">
+                Po dokonaniu wyboru spośród naszych ofert, umówimy się na
+                wybrany termin zakupu i zajmiemy się wszystkimi formalnościami,
+                aby zapewnić Ci bezproblemowy proces zakupu.
               </p>
             </div>
           </div>
 
-          <a
-            href="/Contact"
-            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg z-20 text-lg font-semibold"
-          >
-            Brzmi dobrze! Chcę wiedzieć więcej
-          </a>
+ 
+          
+
+          <div className="flex justify-center mt-4">
+            <Link
+              href="/oferta"
+              className="bg-white text-black py-2 px-4 rounded-2xl text-md hover:bg-gray-300 transition"
+            >
+              Zobacz naszą ofertę!
+            </Link>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default HomePageHero;
+export default ServiceSection;

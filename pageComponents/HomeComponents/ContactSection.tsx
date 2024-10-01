@@ -3,7 +3,7 @@ import React from 'react'
 
 const ContactSection = () => {
   return (
-    <section className='w-full h-auto flex flex-col sm:flex-row justify-center items-center text-center bg-blue-50 py-8 px-4'>
+    <section className='w-full h-auto flex flex-col sm:flex-row justify-center items-center text-center bg-white py-8 px-4'>
       {/* Main Text */}
       <h2 className='text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-0 sm:mr-6'>
         Potrzebujesz więcej informacji, albo jesteś zainteresowany?
