@@ -8,13 +8,14 @@ const HeroMain = dynamic(() => import("../../components/HeroMain"), {ssr: true})
 const InformationSection = dynamic(() => import("../../pageComponents/HomeComponents/InformationSection"), { ssr: true });
 const AboutSection = dynamic(() => import("../../pageComponents/HomeComponents/AboutSection"), { ssr: false });
 const ServiceSection = dynamic(() => import("../../pageComponents/HomeComponents/ServiceSection"), { ssr: false });
-const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponents/OffersHome"), { ssr: false });
+const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponents/Testimonials"), { ssr: false });
 
  
 const ContactSection = dynamic(() => import("../../pageComponents/HomeComponents/ContactSection"), {ssr: false})
 import { Metadata } from "next";
 import Faq from "../../pageComponents/HomeComponents/Faq";
-import OffersHome from "../../pageComponents/HomeComponents/OffersHome";
+import OffersHome from "../../pageComponents/HomeComponents/Testimonials";
+import Testimonials from "../../pageComponents/HomeComponents/Testimonials";
  
 
 
@@ -43,7 +44,7 @@ const Page: React.FC = () => {
         <ServiceSection />
       </section>
       <section>
-        <OffersHome/>
+        <Testimonials/>
       </section>
       <section>
         <Faq/>

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-green-500; /* Apply Tailwind text color */
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  @apply text-green-700; /* Apply Tailwind hover color */
+}
