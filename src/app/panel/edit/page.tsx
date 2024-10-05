@@ -1,4 +1,3 @@
-// app/admin/edit/page.tsx
 "use client";
 
 import React, { useState, useEffect, Suspense } from 'react';
@@ -20,8 +19,8 @@ interface Property {
 const EditProperty: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const propertyId = searchParams.get('id');
-
+  
+  const [propertyId, setPropertyId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -36,14 +35,16 @@ const EditProperty: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (propertyId) {
-      fetchProperty();
+    const id = searchParams.get('id');
+    if (id) {
+      setPropertyId(id);
+      fetchProperty(id);
     }
-  }, [propertyId]);
+  }, [searchParams]);
 
-  const fetchProperty = async () => {
+  const fetchProperty = async (id: string) => {
     try {
-      const response = await axios.get(`/properties/${propertyId}`, {
+      const response = await axios.get(`/properties/${id}`, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
       });
       const property: Property = response.data;
