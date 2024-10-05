@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   
 };
 
+// RootLayout.tsx
 export default function RootLayout({
-  
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -21,11 +21,11 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-      <link rel="icon" href="/favicon.ico"  sizes="128x128" />
+        <link rel="icon" href="/favicon.ico" sizes="128x128" />
       </head>
-      <body className="flex flex-col min-h-screen"> 
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-[70px]"> {/* Adjust pt-[70px] to match your Navbar height */}
           {children}
         </main>
         <Footer />
@@ -33,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+

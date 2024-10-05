@@ -8,14 +8,14 @@ const HeroMain = dynamic(() => import("../../components/HeroMain"), {ssr: true})
 const InformationSection = dynamic(() => import("../../pageComponents/HomeComponents/InformationSection"), { ssr: true });
 const AboutSection = dynamic(() => import("../../pageComponents/HomeComponents/AboutSection"), { ssr: false });
 const ServiceSection = dynamic(() => import("../../pageComponents/HomeComponents/ServiceSection"), { ssr: false });
-const InvestingSection = dynamic(() => import("../../pageComponents/HomeComponents/Testimonials"), { ssr: false });
 
- 
 const ContactSection = dynamic(() => import("../../pageComponents/HomeComponents/ContactSection"), {ssr: false})
 import { Metadata } from "next";
-import Faq from "../../pageComponents/HomeComponents/Faq";
-import OffersHome from "../../pageComponents/HomeComponents/Testimonials";
-import Testimonials from "../../pageComponents/HomeComponents/Testimonials";
+import OfferSection from "./oferta/OfferSection";
+const Faq = dynamic(() => import("../../pageComponents/HomeComponents/Faq"), {ssr: false})
+ 
+const InvestorSection = dynamic(() => import ( "../../pageComponents/HomeComponents/InvestorSection"), {ssr: false})
+ 
  
 
 
@@ -41,14 +41,24 @@ const Page: React.FC = () => {
         <AboutSection />
       </section>
       <section>
-        <ServiceSection />
+        <ServiceSection/>
       </section>
+      
       <section>
-        <Testimonials/>
+        <InvestorSection/>
       </section>
+
+      <section>
+        <OfferSection/>
+      </section>
+   
+    
+      
+   
       <section>
         <Faq/>
       </section>
+    
       <section> 
         <ContactSection />
       </section>

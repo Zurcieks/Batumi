@@ -14,7 +14,7 @@ const AboutSection: React.FC = () => {
       <div className="max-w-7xl bg-white  mx-auto grid lg:grid-cols-2 gap-8 items-start">
         {/* Text Section */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-          <h2 className="text-4xl font-bold text-center lg:text-left text-green-900 mb-4 lg:mb-8">
+          <h2 className="text-4xl font-bold text-center lg:text-left text-black mb-4 lg:mb-8">
             Dlaczego warto inwestować w Batumi!?
           </h2>
           <p className="text-lg text-center lg:text-left text-gray-700 mb-6 lg:mb-10">
@@ -28,8 +28,8 @@ const AboutSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Kafelki z ikonami */}
             <div className="bg-white rounded-lg shadow-md p-4 text-center transition-transform duration-300 hover:shadow-lg">
-              <LocationMarkerIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold text-green-900 mb-2">
+              <LocationMarkerIcon className="h-8 w-8 text-black mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-black mb-2">
                 Atrakcyjna lokalizacja
               </h3>
               <p className="text-gray-700">
@@ -40,8 +40,8 @@ const AboutSection: React.FC = () => {
               </p>
             </div>
             <div className="bg-white  rounded-lg shadow-md p-4 text-center transition-transform duration-300 hover:shadow-lg">
-              <TrendingUpIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold text-green-900 mb-2">
+              <TrendingUpIcon className="h-8 w-8 text-black mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-black mb-2">
                 Rosnący rynek
               </h3>
               <p className="text-gray-700">
@@ -62,8 +62,8 @@ const AboutSection: React.FC = () => {
               </p>
             </div>
             <div className="bg-white  rounded-lg shadow-md p-4 text-center transition-transform duration-300 hover:shadow-lg">
-              <DocumentTextIcon className="h-8 w-8 text-green-900 mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold text-green-900 mb-2">
+              <DocumentTextIcon className="h-8 w-8 text-black mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold text-black mb-2">
                 Gospodarka
               </h3>
               <p className="text-gray-700">
@@ -82,7 +82,7 @@ const AboutSection: React.FC = () => {
             <img
               src="/BatumiBeach.jpg"
               alt="Batumi Beach"
-              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+              className="w-full h-full  object-cover transition-transform duration-300 ease-in-out hover:scale-105"
             />
           </div>
           <div className="lg:w-3/4 xl:w-full transform -rotate-1 rounded-2xl overflow-hidden">
