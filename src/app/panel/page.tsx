@@ -1,7 +1,6 @@
-// app/admin/page.tsx
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from '../lib/axiosConfig';
@@ -81,9 +80,11 @@ const AdminPage: React.FC = () => {
         <p className="text-center text-gray-600">Nie masz jeszcze żadnych ofert.</p>
       ) : (
         <div className="grid gap-6">
-          {properties.map((property) => (
-            <PropertyCard key={property._id} property={property} onDelete={handleDelete} />
-          ))}
+          <Suspense fallback={<p>Ładowanie ofert...</p>}>
+            {properties.map((property) => (
+              <PropertyCard key={property._id} property={property} onDelete={handleDelete} />
+            ))}
+          </Suspense>
         </div>
       )}
     </div>
