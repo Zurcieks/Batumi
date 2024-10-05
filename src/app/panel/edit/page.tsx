@@ -1,7 +1,6 @@
-// app/admin/edit/page.tsx
 "use client";
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from '../../lib/axiosConfig';
 import DropzoneComponent from '../../../../components/Dropzone';
@@ -68,7 +67,13 @@ const EditProperty: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: name === 'price' || name === 'area' || name === 'bathrooms' || name === 'rooms' ? Number(value) : value });
+    setFormData({
+      ...formData,
+      [name]:
+        name === 'price' || name === 'area' || name === 'bathrooms' || name === 'rooms'
+          ? Number(value)
+          : value,
+    });
   };
 
   const handleFilesSelected = (files: File[]) => {
@@ -93,7 +98,7 @@ const EditProperty: React.FC = () => {
     // Dodanie nowych zdjęć
     formData.images.forEach((file) => uploadData.append('images', file));
 
-    // Dodanie istniejących zdjęć jako URL (możesz potrzebować dostosować backend, aby obsłużyć usuwanie starych zdjęć)
+    // Dodanie istniejących zdjęć jako URL
     existingImages.forEach((url) => uploadData.append('existingImages', url));
 
     try {
@@ -121,7 +126,6 @@ const EditProperty: React.FC = () => {
   }
 
   return (
-    <Suspense fallback={<p>Ładowanie danych...</p>}>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Edytuj Ofertę</h1>
       <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 shadow-md rounded-lg space-y-6">
@@ -253,7 +257,6 @@ const EditProperty: React.FC = () => {
         </button>
       </form>
     </div>
-    </Suspense>
   );
 };
 
