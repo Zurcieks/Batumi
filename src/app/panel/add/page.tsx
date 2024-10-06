@@ -1,7 +1,7 @@
 // app/admin/add/page.tsx
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from '../../lib/axiosConfig';
 import DropzoneComponent from '../../../../components/Dropzone';
@@ -34,6 +34,12 @@ const AddProperty: React.FC = () => {
             : value,
       });
     };
+    useEffect(() => {
+      const token = sessionStorage.getItem('token');
+      if (!token) {
+        router.replace('/login');
+      }
+    }, [router]);
   
     const handleFilesSelected = (files: File[]) => {
       setFormData({ ...formData, images: [...formData.images, ...files] });

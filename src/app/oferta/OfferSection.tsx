@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaBed, FaBath, FaVectorSquare } from "react-icons/fa";
 import Link from "next/link";
-declare module 'react-slick';
+declare module "react-slick";
 
 interface Offer {
   _id: string;
@@ -72,7 +72,7 @@ const OfferSection: React.FC = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}
+        style={{ backgroundImage: "url('OfferHero.jpg')" }}
       ></div>
 
       {/* Overlay */}
@@ -90,12 +90,13 @@ const OfferSection: React.FC = () => {
           mieszkania, mamy coś dla Ciebie. Sprawdź, co przygotowaliśmy!
         </p>
 
-        {/* Offers Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {offers.slice(0, 6).map((offer) => (
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          {offers.slice(0, 3).map((offer, index) => (
             <div
               key={offer._id}
-              className="bg-white bg-opacity-90 border border-gray-200 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 relative group"
+              className={`bg-white bg-opacity-90 border border-gray-200 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 relative group ${
+                index === 2 ? "hidden lg:block" : ""
+              }`}
               onMouseEnter={() =>
                 handleMouseEnter(offer._id, offer.images.length)
               }
@@ -119,7 +120,7 @@ const OfferSection: React.FC = () => {
                 </div>
               </div>
               <div className="p-5 flex flex-col">
-                <h3 className="text-2xl font-semibold text-black mb-2   transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-black mb-2 transition-colors duration-300">
                   {offer.title}
                 </h3>
                 <div className="flex items-center text-gray-600 text-sm mb-4 space-x-4">
@@ -139,7 +140,7 @@ const OfferSection: React.FC = () => {
 
                 <button
                   onClick={() => openModal(offer)}
-                  className="bg-blue-700 text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 self-start"
+                  className=" my-auto bg-blue-700 text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 self-start"
                 >
                   Zobacz Szczegóły
                 </button>
@@ -151,8 +152,8 @@ const OfferSection: React.FC = () => {
         {/* Link to contact page */}
         <div className="flex flex-col justify-center items-center text-center mt-10">
           <p className="text-xl text-white mb-4 max-w-xl">
-            Zobacz naszą pełną ofertę nieruchomości i znajdź swój wymarzony dom w
-            Batumi!
+            Zobacz naszą pełną ofertę nieruchomości i znajdź swój wymarzony dom
+            w Batumi!
           </p>
           <Link
             href="/oferta"
@@ -209,7 +210,9 @@ const OfferSection: React.FC = () => {
                   </div>
                   <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
                     <p className="text-gray-700 font-semibold">Powierzchnia</p>
-                    <p className="text-2xl text-black">{selectedOffer.area} m²</p>
+                    <p className="text-2xl text-black">
+                      {selectedOffer.area} m²
+                    </p>
                   </div>
                 </div>
               </div>

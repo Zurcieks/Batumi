@@ -3,7 +3,7 @@
 
 import React from "react";
 import Link from "next/link";
-import axios from "../src/app/lib/axiosConfig";
+ 
 
 interface Property {
   _id: string;

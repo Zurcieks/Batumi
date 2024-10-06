@@ -38,7 +38,13 @@ const EditProperty: React.FC = () => {
     if (propertyId) {
       fetchProperty();
     }
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      router.replace('/login');
+    }
   }, [propertyId]);
+
+ 
 
   const fetchProperty = async () => {
     try {
@@ -207,7 +213,7 @@ const EditProperty: React.FC = () => {
           <div className="grid grid-cols-3 gap-4">
             {existingImages.map((url, index) => (
               <div key={index} className="relative">
-                <img src={url} alt={`Existing ${index}`} className="w-full h-32 object-cover rounded" />
+                <img  src={`http://localhost:5000${url}`}alt={`Existing ${index}`} className="w-full h-32 object-cover rounded" />
                 <button
                   type="button"
                   onClick={() => handleRemoveExistingImage(url)}
