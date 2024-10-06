@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from '../../lib/axiosConfig';
 import DropzoneComponent from '../../../../components/Dropzone';
+import { Suspense } from 'react'
 
 interface Property {
   _id: string;
@@ -132,6 +133,7 @@ const EditProperty: React.FC = () => {
   }
 
   return (
+    <Suspense>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Edytuj Ofertę</h1>
       <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 shadow-md rounded-lg space-y-6">
@@ -263,6 +265,7 @@ const EditProperty: React.FC = () => {
         </button>
       </form>
     </div>
+    </Suspense>
   );
 };
 
