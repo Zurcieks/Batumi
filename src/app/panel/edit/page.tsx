@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from '../../lib/axiosConfig';
 import DropzoneComponent from '../../../../components/Dropzone';
-import { Suspense } from 'react'
 
 interface Property {
   _id: string;
@@ -44,8 +43,6 @@ const EditProperty: React.FC = () => {
       router.replace('/login');
     }
   }, [propertyId]);
-
- 
 
   const fetchProperty = async () => {
     try {
@@ -133,7 +130,6 @@ const EditProperty: React.FC = () => {
   }
 
   return (
-    <Suspense>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Edytuj Ofertę</h1>
       <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 shadow-md rounded-lg space-y-6">
@@ -215,7 +211,7 @@ const EditProperty: React.FC = () => {
           <div className="grid grid-cols-3 gap-4">
             {existingImages.map((url, index) => (
               <div key={index} className="relative">
-                <img  src={`http://localhost:5000${url}`}alt={`Existing ${index}`} className="w-full h-32 object-cover rounded" />
+                <img src={`http://localhost:5000${url}`} alt={`Existing ${index}`} className="w-full h-32 object-cover rounded" />
                 <button
                   type="button"
                   onClick={() => handleRemoveExistingImage(url)}
@@ -239,18 +235,6 @@ const EditProperty: React.FC = () => {
                     alt={`New Preview ${index}`}
                     className="w-full h-32 object-cover rounded"
                   />
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setFormData({
-                        ...formData,
-                        images: formData.images.filter((_, i) => i !== index),
-                      })
-                    }
-                    className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 hover:bg-red-700"
-                  >
-                    &times;
-                  </button>
                 </div>
               ))}
             </div>
@@ -258,15 +242,20 @@ const EditProperty: React.FC = () => {
         </div>
         <button
           type="submit"
+          className="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={uploading}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
         >
-          {uploading ? 'Aktualizowanie...' : 'Zaktualizuj Ofertę'}
+          {uploading ? 'Trwa Aktualizacja...' : 'Zaktualizuj Ofertę'}
         </button>
       </form>
     </div>
-    </Suspense>
   );
 };
 
-export default EditProperty;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Ładowanie...</div>}>
+      <EditProperty />
+    </Suspense>
+  );
+}
