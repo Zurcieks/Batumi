@@ -4,7 +4,7 @@ import {
   TrendingUpIcon,
   DocumentTextIcon,
 } from "@heroicons/react/outline";
-
+import Image from "next/image";
 const AboutSection: React.FC = () => {
   return (
    
@@ -76,38 +76,28 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Images Section */}
-        <div className="grid grid-cols-2 gap-2 xl:grid-cols-2 lg:flex lg:flex-col lg:items-center xl:grid  ">
-          {/* Obrazki dla laptopów (lg) */}
-          <div className="lg:w-3/4 lg:hidden xl:block xl:w-full transform rotate-1 rounded-2xl overflow-hidden">
-            <img
-              src="/BatumiBeach.jpg"
-              alt="Batumi Beach"
-              className="w-full h-full  object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-            />
-          </div>
-          <div className="lg:w-3/4 xl:w-full transform -rotate-1 rounded-2xl overflow-hidden">
-            <img
-              src="/BatumiBeach2.jpg"
-              alt="Batumi Beach 1"
-              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-            />
-          </div>
-
-          {/* Te dwa obrazki będą ukryte na laptopach, ale widoczne na mniejszych ekranach i komputerach */}
-          <div className="block  lg:w-3/4 xl:w-full transform rotate-1 rounded-2xl overflow-hidden">
-            <img
-              src="/BatumiGeorgia.jpg"
-              alt="Batumi Beach 2"
-              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-            />
-          </div>
-          <div className="block lg:hidden xl:block lg:w-1/2 xl:w-full transform -rotate-1 rounded-2xl overflow-hidden">
-            <img
-              src="/BatumiBeach4.jpg"
-              alt="Batumi Beach 3"
-              className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-            />
-          </div>
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { src: "/BatumiBeach.webp", alt: "Batumi Beach" },
+            { src: "/BatumiBeach2.webp", alt: "Batumi Beach 1" },
+            { src: "/BatumiGeorgia.webp", alt: "Batumi Beach 2" },
+            { src: "/BatumiBeach4.webp", alt: "Batumi Beach 3" },
+          ].map((image, index) => (
+            <div
+              key={index}
+              className="rounded-2xl overflow-hidden"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                layout="responsive"
+                width={600}
+                height={400}
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -33,7 +33,7 @@ const AboutSection: React.FC = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Atrakcyjna Lokalizacja
               </h3>
-              <p className="text-sm md:text-base text-gray-700">
+              <p className="text-md md:text-base text-gray-700">
                 Batumi jest znane z pięknych plaż, nowoczesnej architektury oraz rozbudowanej infrastruktury turystycznej, co czyni je doskonałym miejscem na inwestycję. Z każdą kolejną inwestycją miasto zyskuje na atrakcyjności.
               </p>
             </div>
@@ -50,7 +50,7 @@ const AboutSection: React.FC = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Rosnący Rynek Nieruchomości
               </h3>
-              <p className="text-sm md:text-base text-gray-700">
+              <p className="text-md md:text-base text-gray-700">
                 Coroczny wzrost wartości nieruchomości sięga nawet 15%, co daje wyjątkowe możliwości dla inwestorów. 4 miliony turystów odwiedzających miasto rocznie zapewnia stały popyt na wynajem krótko- i długoterminowy.
               </p>
             </div>
@@ -67,7 +67,7 @@ const AboutSection: React.FC = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Przyjazne Przepisy
               </h3>
-              <p className="text-sm md:text-base text-gray-700">
+              <p className="text-md md:text-base text-gray-700">
                 Gruzja oferuje 0% podatku od nieruchomości, co znacznie zwiększa rentowność inwestycji. Dodatkowo cudzoziemcy mogą przebywać w Gruzji przez 365 dni bez konieczności wiz.
               </p>
             </div>
@@ -84,7 +84,7 @@ const AboutSection: React.FC = () => {
               <h3 className="text-xl font-semibold text-black mb-4">
                 Stabilny Wzrost Gospodarczy
               </h3>
-              <p className="text-sm md:text-base text-black">
+              <p className="text-md md:text-base text-black">
                 Gruzja odnotowuje stały wzrost gospodarczy na poziomie 7,5% rocznie, a inwestycje zagraniczne sięgają 1,5 miliarda USD. Stabilność gospodarcza przyciąga wielu nowych inwestorów, co zwiększa potencjał wzrostu wartości inwestycji.
               </p>
             </div>

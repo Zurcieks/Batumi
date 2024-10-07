@@ -72,7 +72,7 @@ const OfferSection: React.FC = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('OfferHero.jpg')" }}
+        style={{ backgroundImage: "url('OfferHero.webp')" }}
       ></div>
 
       {/* Overlay */}

@@ -3,10 +3,10 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[500px] md:h-[80vh] flex flex-col justify-center items-center text-white z-0">
+    <div className="relative w-full h-[500px] md:h-[65vh] flex flex-col justify-center items-center text-white z-0">
       {/* Use standard img tag for background */}
       <img
-        src="/Batumi.jpg" // Use .src to get the correct path if it's in the public folder
+        src="/Batumi.webp" // Use .src to get the correct path if it's in the public folder
         alt="Tło Batumi"
         className="absolute inset-0 z-[-1] w-full h-full object-cover" // Full width and height with cover
         style={{ filter: "brightness(0.7)" }} // Darken the image for better text visibility

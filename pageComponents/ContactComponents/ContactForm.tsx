@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
     imię: "",
+    nazwisko: "",
     email: "",
     temat: "",
     wiadomość: "",
@@ -11,6 +12,7 @@ const ContactForm: React.FC = () => {
   const [messages, setMessages] = useState({ success: "", error: "" });
   const [errors, setErrors] = useState({
     imię: "",
+    nazwisko: "",
     email: "",
     temat: "",
     wiadomość: "",
@@ -31,13 +33,14 @@ const ContactForm: React.FC = () => {
 
     const newErrors = {
       imię: !formData.imię ? "Imię jest wymagane" : "",
+      nazwisko: !formData.nazwisko ? "Nazwisko jest wymagane" : "",
       email: !formData.email
         ? "Email jest wymagany"
         : !isValidEmail(formData.email)
         ? "Niepoprawny adres email"
         : "",
-        temat: !formData.temat ? "Temat jest wymagany" : "",
-        wiadomość: !formData.wiadomość ? "Wiadomość jest wymagana" : "",
+      temat: !formData.temat ? "Temat jest wymagany" : "",
+      wiadomość: !formData.wiadomość ? "Wiadomość jest wymagana" : "",
     };
 
     setErrors(newErrors);
@@ -75,12 +78,12 @@ const ContactForm: React.FC = () => {
 
         {/* Contact Form Section */}
         <form onSubmit={handleSubmit} className="space-y-6 lg:w-1/2">
-          {["imię", "email", "temat", "wiadomość"].map((field) => (
+          {["imię", "nazwisko", "email", "temat", "wiadomość"].map((field) => (
             <div key={field}>
               <input
                 id={field}
                 name={field}
-                type={field === "message" ? "textarea" : "text"}
+                type={field === "wiadomość" ? "textarea" : "text"}
                 value={formData[field as keyof typeof formData]}
                 onChange={handleInputChange}
                 placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
@@ -99,9 +102,9 @@ const ContactForm: React.FC = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v4a1 1 0 002 0V7zm-1 8a1 1 0 100-2 1 1 0 000 2z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                     <span className="font-medium">
@@ -121,9 +124,9 @@ const ContactForm: React.FC = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </button>
@@ -152,9 +155,9 @@ const ContactForm: React.FC = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v4a1 1 0 002 0V7zm-1 8a1 1 0 100-2 1 1 0 000 2z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <span className="font-medium">Wiadomość została wysłana!</span>
@@ -171,9 +174,9 @@ const ContactForm: React.FC = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </button>

@@ -7,7 +7,7 @@ const Hero = () => {
     
       {/* Use standard img tag for background */}
       <img
-        src="/OfferHero.jpg" // Use the correct path for your image
+        src="/OfferHero.webp" // Use the correct path for your image
         alt="Tło nieruchomości w Gruzji"
         className="absolute inset-0 z-[-1] w-full h-full object-cover" // Full width and height with cover
         style={{ filter: "brightness(0.6)" }} // Darken the image for better text visibility
