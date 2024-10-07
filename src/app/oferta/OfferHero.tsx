@@ -11,7 +11,7 @@ const Hero = () => {
         alt="Tło nieruchomości w Gruzji"
         className="absolute inset-0 z-[-1] w-full h-full object-cover" // Full width and height with cover
         style={{ filter: "brightness(0.6)" }} // Darken the image for better text visibility
-        loading="lazy" // Optional for performance
+        fetchPriority="high"
       />
       {/* Gradient na tle */}
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>

@@ -20,6 +20,7 @@ const ContactSection = dynamic(
 export const metadata: Metadata = {
   title: "InvestinGeorgia - O nas",
   description: "Dowiedz się o nas więcej!",
+   keywords: "Informacje o firmie InvestinGeorgia, inwestycje w Batumi, nieruchomości Gruzja, kim jesteśmy, nasza historia, inwestycje zagraniczne, zespół InvestinGeorgia, oferta nieruchomości, doświadczenie na rynku nieruchomości, wsparcie inwestorów, inwestycje w Gruzji, inwestycje nad Morzem Czarnym, o nas, inwestowanie w Batumi, oferta dla inwestorów, nasze wartości, dlaczego Batumi, nieruchomości nad morzem"
  
 };
 
