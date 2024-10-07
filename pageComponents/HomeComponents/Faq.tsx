@@ -83,26 +83,24 @@ const Faq = () => {
   ];
 
   return (
-    <div className="flex flex-row md:flex-row items-center justify-between max-w-7xl mx-auto py-12 px-6 gap-12">
+    <div className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto py-16 px-6 gap-12">
       {/* FAQ Section */}
-      <div className="flex-1">
+      <div className="flex-1 w-full">
         {/* FAQ Intro Paragraph */}
-      
-      
-        <h2 className="  text-4xl    md:text-4xl lg:text-5xl  font-bold font-sans text-center mx-6 leading-tight text-black mb-8">
+        <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold  text-center leading-tight text-gray-800 mb-8">
           Najczęściej zadawane pytania
         </h2>
-        <p className="text-md text-center text-gray-600 mb-4 px-6">
+        <p className="text-lg text-center text-gray-600 mb-6 px-8 font-semibold">
           Poniżej znajdziesz odpowiedzi na najczęściej zadawane pytania dotyczące inwestowania w nieruchomości w Batumi. Mamy nadzieję, że znajdziesz tu wszystkie potrzebne informacje!
         </p>
-        <div className="bg-white shadow-lg rounded-lg p-6">
+        <div className="bg-white shadow-lg rounded-xl p-8">
           {faqs.map((faq, index) => (
             <FaqItem key={index} question={faq.question} answer={faq.answer} />
           ))}
         </div>
       </div>
 
- 
+    
     </div>
   );
 };

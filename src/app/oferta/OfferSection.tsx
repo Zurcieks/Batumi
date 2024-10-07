@@ -157,7 +157,7 @@ const OfferSection: React.FC = () => {
           </p>
           <Link
             href="/oferta"
-            className="bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow hover:bg-green-700 transition duration-300 ease-in-out"
+            className="border border-white text-white mt-10 py-3 px-8 rounded-full md:text-lg lg:text-xl transition-transform transform hover:scale-105 hover:bg-gray hover:text-white shadow-lg"
           >
             Oferta
           </Link>

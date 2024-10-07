@@ -8,7 +8,7 @@ import {
 
 const AboutSection: React.FC = () => {
   return (
-    <section className="bg-white py-16 px-4 md:px-12 lg:px-24">
+    <section className="bg-gradient-to-r from-blue-50 via-white to-blue-50 py-16 px-4 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Title and Introduction */}
         <div className="text-center mb-12">
@@ -26,14 +26,16 @@ const AboutSection: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10">
             {/* Icon and Text */}
             <div className="lg:w-1/2 flex items-center justify-center lg:order-2">
-              <LocationMarkerIcon className="h-16 w-16 text-black" />
+              <div className="p-4 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 hover:scale-105 transition-transform duration-300">
+                <LocationMarkerIcon className="h-16 w-16 text-blue-700" />
+              </div>
             </div>
             {/* Text Section */}
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 hover:text-blue-700 transition-colors duration-300">
                 Atrakcyjna Lokalizacja
               </h3>
-              <p className="text-md md:text-base text-gray-700">
+              <p className="text-md text-gray-700">
                 Batumi jest znane z pięknych plaż, nowoczesnej architektury oraz rozbudowanej infrastruktury turystycznej, co czyni je doskonałym miejscem na inwestycję. Z każdą kolejną inwestycją miasto zyskuje na atrakcyjności.
               </p>
             </div>
@@ -43,11 +45,13 @@ const AboutSection: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10">
             {/* Icon and Text */}
             <div className="lg:w-1/2 flex items-center justify-center">
-              <TrendingUpIcon className="h-16 w-16 text-black" />
+              <div className="p-4 rounded-full bg-gradient-to-br from-green-100 to-green-200 hover:scale-105 transition-transform duration-300">
+                <TrendingUpIcon className="h-16 w-16 text-green-700" />
+              </div>
             </div>
             {/* Text Section */}
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 hover:text-green-700 transition-colors duration-300">
                 Rosnący Rynek Nieruchomości
               </h3>
               <p className="text-md md:text-base text-gray-700">
@@ -60,11 +64,13 @@ const AboutSection: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10">
             {/* Icon and Text */}
             <div className="lg:w-1/2 flex items-center justify-center lg:order-2">
-              <DocumentTextIcon className="h-16 w-16 text-black" />
+              <div className="p-4 rounded-full bg-gradient-to-br from-yellow-100 to-yellow-200 hover:scale-105 transition-transform duration-300">
+                <DocumentTextIcon className="h-16 w-16 text-yellow-700" />
+              </div>
             </div>
             {/* Text Section */}
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 hover:text-yellow-700 transition-colors duration-300">
                 Przyjazne Przepisy
               </h3>
               <p className="text-md md:text-base text-gray-700">
@@ -77,14 +83,16 @@ const AboutSection: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10">
             {/* Icon and Text */}
             <div className="lg:w-1/2 flex items-center justify-center">
-              <GlobeAltIcon className="h-16 w-16 text-black" />
+              <div className="p-4 rounded-full bg-gradient-to-br from-purple-100 to-purple-200 hover:scale-105 transition-transform duration-300">
+                <GlobeAltIcon className="h-16 w-16 text-purple-700" />
+              </div>
             </div>
             {/* Text Section */}
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h3 className="text-xl font-semibold text-black mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 hover:text-purple-700 transition-colors duration-300">
                 Stabilny Wzrost Gospodarczy
               </h3>
-              <p className="text-md md:text-base text-black">
+              <p className="text-md md:text-base text-gray-700">
                 Gruzja odnotowuje stały wzrost gospodarczy na poziomie 7,5% rocznie, a inwestycje zagraniczne sięgają 1,5 miliarda USD. Stabilność gospodarcza przyciąga wielu nowych inwestorów, co zwiększa potencjał wzrostu wartości inwestycji.
               </p>
             </div>
