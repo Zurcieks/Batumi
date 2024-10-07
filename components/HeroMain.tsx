@@ -9,7 +9,7 @@ const Hero = () => {
         src="/HeaderImg.webp"
         alt="Tło nieruchomości w Gruzji"
         className="absolute inset-0 z-[-1] w-full h-full object-cover brightness-[0.9]"
-        loading="lazy"
+       
         fetchPriority="high"
       />
       {/* Gradient on background */}

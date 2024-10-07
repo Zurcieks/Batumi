@@ -95,7 +95,7 @@ const AboutSection: React.FC = () => {
                 height={400}
                 quality={50}
                 className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                loading="lazy"
+                priority
               />
             </div>
           ))}
