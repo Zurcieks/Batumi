@@ -107,10 +107,10 @@ const Navbar: React.FC = () => {
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-12 ml-auto">
-          <Link href="/o-nas" className={`${pathname === "/o-nas" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>O nas</Link>
-          <Link href="/uslugi" className={`${pathname === "/uslugi" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Usługi</Link>
-          <Link href="/oferta" className={`${pathname === "/oferta" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Oferta</Link>
-          <Link href="/kontakt" className={`${pathname === "/kontakt" ? "text-white font-bold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Kontakt</Link>
+          <Link href="/o-nas" className={`${pathname === "/o-nas" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>O nas</Link>
+          <Link href="/uslugi" className={`${pathname === "/uslugi" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Usługi</Link>
+          <Link href="/oferta" className={`${pathname === "/oferta" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Oferta</Link>
+          <Link href="/kontakt" className={`${pathname === "/kontakt" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Kontakt</Link>
 
           <div className="flex items-center space-x-4">
             <SocialIcon url="https://www.facebook.com" style={{ height: 35, width: 35 }} />

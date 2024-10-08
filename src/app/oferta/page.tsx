@@ -2,7 +2,8 @@ import dynamic from "next/dynamic";
 import React from "react";
 
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
-import OfferSection from "./OfferSection";
+import OfferSection from "../../../pageComponents/HomeComponents/OfferSection";
+import OfferPage from "./OfferPage";
 
 const OfferHero = dynamic(() => import("./OfferHero"), { ssr: true });
 
@@ -20,7 +21,7 @@ const page = () => {
         <OfferHero />
       </header>
       <section>
-        <OfferSection />
+        <OfferPage/>
       </section>
     </div>
   );

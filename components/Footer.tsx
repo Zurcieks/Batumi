@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa'; // Import 
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8">
+    <footer className="bg-black text-gray-300 py-8">
       {/* Sekcja ikon mediów społecznościowych */}
       <div className="container mx-auto px-4 text-center mb-6">
         <div className="flex justify-center space-x-6">

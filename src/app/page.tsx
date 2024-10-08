@@ -23,7 +23,7 @@ const ContactSection = dynamic(
   { ssr: false }
 );
 import { Metadata } from "next";
-const OfferSection = dynamic(() => import("./oferta/OfferSection"), {
+const OfferSection = dynamic(() => import("../../pageComponents/HomeComponents/OfferSection"), {
   ssr: false,
 });
 const Faq = dynamic(() => import("../../pageComponents/HomeComponents/Faq"), {
