@@ -22,7 +22,7 @@ const Hero = () => {
       </p>
 
       <Link
-        href="/kontakt"
+        href="/en/contact"
         className="border border-white text-white mt-10 py-3 px-8 rounded-full md:text-lg lg:text-xl transition-transform transform hover:scale-105 hover:bg-gray hover:text-white shadow-lg"
       >
         Contact with us!

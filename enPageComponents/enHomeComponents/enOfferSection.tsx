@@ -155,7 +155,7 @@ const OfferSection: React.FC = () => {
             See our full range of properties and find your dream home in Batumi!
           </p>
           <Link
-            href="/oferta"
+            href="/en/offers"
             className="border border-white text-white mt-10 py-3 px-8 rounded-full md:text-lg lg:text-xl transition-transform transform hover:scale-105 hover:bg-gray hover:text-white shadow-lg"
           >
             Offers

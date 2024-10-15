@@ -60,7 +60,7 @@ const ServiceSection = () => {
 
           <div className="flex justify-center mt-8">
             <Link
-              href="/kontakt"
+              href="/en/contact"
               className="border border-white text-white py-3 px-8 rounded-full md:text-lg lg:text-xl transition-transform transform hover:scale-105 hover:bg-gray hover:text-white shadow-lg"
             >
               Contact with us!

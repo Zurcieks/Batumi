@@ -61,6 +61,10 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    handleLanguageSwitch('pl'); // Zmiana języka na polski po kliknięciu w logo
+  };
+
   const navItems = {
     pl: {
       about: "/o-nas",
@@ -81,7 +85,7 @@ const Navbar: React.FC = () => {
       } bg-black`}
     >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
-        <Link href="/">
+        <Link href="/" onClick={handleLogoClick}>
           <Image
             src='/logo.webp'
             alt="Logo"

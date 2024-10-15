@@ -11,7 +11,7 @@ const ContactSection = () => {
 
       {/* Contact Button */}
       <div>
-        <Link href="/contact" className='inline-block px-5 py-3 bg-blue-600 text-white font-medium rounded-full shadow-lg hover:bg-blue-700 transition duration-300'>
+        <Link href="/en/contact" className='inline-block px-5 py-3 bg-blue-600 text-white font-medium rounded-full shadow-lg hover:bg-blue-700 transition duration-300'>
           Contact us!
         </Link>
       </div>
