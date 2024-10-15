@@ -1,7 +1,11 @@
 import dynamic from "next/dynamic";
 import React from "react";
-
+import AboutContact from "../../../pageComponents/AboutComponents/AboutContact";
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+import WhyUsSection from "../../../pageComponents/AboutComponents/WhyUsSection";
+import History from "../../../pageComponents/AboutComponents/History";
+import Testimionials from "../../../pageComponents/AboutComponents/Testimionials";
+import ContactSection from "../../../pageComponents/HomeComponents/Contact";
 
 const InfoSection = dynamic(
   () => import("../../../pageComponents/AboutComponents/InfoSection"),
@@ -12,16 +16,11 @@ const Hero = dynamic(
   { ssr: true }
 );
 
-const ContactSection = dynamic(
-  () => import("../../../pageComponents/HomeComponents/ContactSection"),
-  { ssr: false }
-);
-
 export const metadata: Metadata = {
   title: "InvestinGeorgia - O nas",
   description: "Dowiedz się o nas więcej!",
-   keywords: "Informacje o firmie InvestinGeorgia, inwestycje w Batumi, nieruchomości Gruzja, kim jesteśmy, nasza historia, inwestycje zagraniczne, zespół InvestinGeorgia, oferta nieruchomości, doświadczenie na rynku nieruchomości, wsparcie inwestorów, inwestycje w Gruzji, inwestycje nad Morzem Czarnym, o nas, inwestowanie w Batumi, oferta dla inwestorów, nasze wartości, dlaczego Batumi, nieruchomości nad morzem"
- 
+  keywords:
+    "Informacje o firmie InvestinGeorgia, inwestycje w Batumi, nieruchomości Gruzja, kim jesteśmy, nasza historia, inwestycje zagraniczne, zespół InvestinGeorgia, oferta nieruchomości, doświadczenie na rynku nieruchomości, wsparcie inwestorów, inwestycje w Gruzji, inwestycje nad Morzem Czarnym, o nas, inwestowanie w Batumi, oferta dla inwestorów, nasze wartości, dlaczego Batumi, nieruchomości nad morzem",
 };
 
 const page = () => {
@@ -32,6 +31,17 @@ const page = () => {
       </header>
       <section>
         <InfoSection />
+      </section>
+      <section>
+        <History />
+      </section>
+
+      <section>
+        <WhyUsSection />
+      </section>
+
+      <section>
+        <Testimionials />
       </section>
       <section>
         <ContactSection />

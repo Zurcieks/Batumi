@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+ 
 
 const ServiceHero = dynamic(
   () => import("../../../pageComponents/ServicesComponents/ServiceHero"),
@@ -9,7 +10,7 @@ const ServiceHero = dynamic(
 );
 const ServiceInfo = dynamic(() => import("../../../pageComponents/ServicesComponents/ServiceInfo"), {ssr: false});
 
-const ContactSection = dynamic(() => import("../../../pageComponents/HomeComponents/ContactSection"), {ssr: false});
+const ContactSection = dynamic(() => import("../../../pageComponents/HomeComponents/Contact"), {ssr: false});
 
 export const metadata: Metadata = {
   title: "InvestinGeorgia - Uslugi",
@@ -30,6 +31,7 @@ const page = () => {
       <section>
         <ContactSection />
       </section>
+      
     </div>
   );
 };

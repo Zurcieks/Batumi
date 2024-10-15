@@ -19,7 +19,7 @@ const ServiceSection = dynamic(
 );
 
 const ContactSection = dynamic(
-  () => import("../../pageComponents/HomeComponents/ContactSection"),
+  () => import("../../pageComponents/HomeComponents/Contact"),
   { ssr: false }
 );
 import { Metadata } from "next";

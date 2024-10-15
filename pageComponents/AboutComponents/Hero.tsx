@@ -13,6 +13,7 @@ const Hero = () => {
         fetchPriority="high"
       />
       <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+          
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-4 md:mt-12 lg:mt-16 text-center z-10 leading-tight">
         Dowiedz się o nas więcej!
       </h1>
