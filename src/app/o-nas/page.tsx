@@ -1,11 +1,15 @@
 import dynamic from "next/dynamic";
 import React from "react";
-import AboutContact from "../../../pageComponents/AboutComponents/AboutContact";
+ 
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
-import WhyUsSection from "../../../pageComponents/AboutComponents/WhyUsSection";
-import History from "../../../pageComponents/AboutComponents/History";
-import Testimionials from "../../../pageComponents/AboutComponents/Testimionials";
-import ContactSection from "../../../pageComponents/HomeComponents/Contact";
+ 
+ 
+
+// Dynamically import the components
+const WhyUsSection = dynamic(() => import("../../../pageComponents/AboutComponents/WhyUsSection"), { ssr: true });
+const History = dynamic(() => import("../../../pageComponents/AboutComponents/History"), { ssr: true });
+const Testimonials = dynamic(() => import("../../../pageComponents/AboutComponents/Testimionials"), { ssr: false });
+const ContactSection = dynamic(() => import("../../../pageComponents/HomeComponents/Contact"), { ssr: false });
 
 const InfoSection = dynamic(
   () => import("../../../pageComponents/AboutComponents/InfoSection"),
@@ -41,7 +45,7 @@ const page = () => {
       </section>
 
       <section>
-        <Testimionials />
+        <Testimonials/>
       </section>
       <section>
         <ContactSection />
