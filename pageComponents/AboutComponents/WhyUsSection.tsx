@@ -89,7 +89,7 @@ const QualitySection: React.FC = () => {
               <Image
                 src="/4.png"
                 alt="Lokalna Ekspertyza"
-                width={150}
+                width={155}
                 height={150}
                 className="object-contain"
               />
