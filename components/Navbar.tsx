@@ -2,19 +2,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SocialIcon } from "react-social-icons";
 import ReactCountryFlag from "react-country-flag";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-  const dropdownRef = useRef<HTMLDivElement>(null); // Ref do rozwijanego menu
-  const hamburgerRef = useRef<HTMLButtonElement>(null); // Ref do przycisku hamburgera
+  const [currentLanguage, setCurrentLanguage] = useState<'pl' | 'en'>('pl');
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
-  // Funkcja otwierająca/zamykająca menu
   const handleDropdownToggle = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
@@ -31,7 +32,6 @@ const Navbar: React.FC = () => {
     setLastScrollY(currentScrollY);
   };
 
-  // Funkcja zamykająca menu, gdy użytkownik kliknie poza nim
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -39,18 +39,40 @@ const Navbar: React.FC = () => {
       hamburgerRef.current &&
       !hamburgerRef.current.contains(event.target as Node)
     ) {
-      setIsDropdownOpen(false); // Zamyka menu
+      setIsDropdownOpen(false);
     }
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mousedown", handleClickOutside); // Nasłuchiwanie na kliknięcia poza menu
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside); // Czyszczenie event listenerów
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [lastScrollY]);
+
+  const handleLanguageSwitch = (lang: 'pl' | 'en') => {
+    setCurrentLanguage(lang);
+    if (lang === "en") {
+      router.push("/en");
+    } else if(lang === "pl") {
+      router.push("/");
+    }
+  };
+
+  const navItems = {
+    pl: {
+      about: "/o-nas",
+      offers: "/oferta",
+      contact: "/kontakt",
+    },
+    en: {
+      about: "/en/about-us",
+      offers: "/en/offers",
+      contact: "/en/contact",
+    },
+  };
 
   return (
     <nav
@@ -59,7 +81,6 @@ const Navbar: React.FC = () => {
       } bg-black`}
     >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
-        {/* Left: Logo */}
         <Link href="/">
           <Image
             src='/logo.webp'
@@ -71,17 +92,18 @@ const Navbar: React.FC = () => {
           />
         </Link>
 
-        {/* Center: Language switcher */}
         <div className="flex justify-center items-center space-x-4">
-          <button className="text-white">
+          <button onClick={() => handleLanguageSwitch("pl")} className="text-white">
             <ReactCountryFlag alt="polish flag" countryCode="PL" svg style={{ fontSize: '1.5em' }} />
           </button>
-          <button className="text-white">
+          <button
+            onClick={() => handleLanguageSwitch("en")}
+            className="text-white"
+          >
             <ReactCountryFlag alt="UK flag" countryCode="GB" svg style={{ fontSize: '1.5em' }} />
           </button>
         </div>
 
-        {/* Mobile and tablet menu button */}
         <div className="md:hidden">
           <button
             ref={hamburgerRef}
@@ -105,12 +127,16 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-12 ml-auto">
-          <Link href="/o-nas" className={`${pathname === "/o-nas" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>O nas</Link>
-          <Link href="/uslugi" className={`${pathname === "/uslugi" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Usługi</Link>
-          <Link href="/oferta" className={`${pathname === "/oferta" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Oferta</Link>
-          <Link href="/kontakt" className={`${pathname === "/kontakt" ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>Kontakt</Link>
+          <Link href={navItems[currentLanguage].about} className={`${pathname === navItems[currentLanguage].about ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>
+            {currentLanguage === "pl" ? "O nas" : "About Us"}
+          </Link>
+          <Link href={navItems[currentLanguage].offers} className={`${pathname === navItems[currentLanguage].offers ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>
+            {currentLanguage === "pl" ? "Oferta" : "Offers"}
+          </Link>
+          <Link href={navItems[currentLanguage].contact} className={`${pathname === navItems[currentLanguage].contact ? "text-white font-semibold" : "text-gray-50"} hover:text-gray-200 font-semibold`}>
+            {currentLanguage === "pl" ? "Kontakt" : "Contact"}
+          </Link>
 
           <div className="flex items-center space-x-4">
             <SocialIcon url="https://www.facebook.com" style={{ height: 35, width: 35 }} />
@@ -118,13 +144,17 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile dropdown menu */}
         {isDropdownOpen && (
           <div ref={dropdownRef} className="absolute top-24 left-0 w-full bg-black text-white md:hidden">
-            <Link href="/o-nas" className={`block py-4 text-center ${pathname === "/o-nas" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>O nas</Link>
-            <Link href="/uslugi" className={`block py-4 text-center ${pathname === "/uslugi" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>Usługi</Link>
-            <Link href="/oferta" className={`block py-4 text-center ${pathname === "/oferta" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>Oferta</Link>
-            <Link href="/kontakt" className={`block py-4 text-center ${pathname === "/kontakt" ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>Kontakt</Link>
+            <Link href={navItems[currentLanguage].about} className={`block py-4 text-center ${pathname === navItems[currentLanguage].about ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>
+              {currentLanguage === "pl" ? "O nas" : "About Us"}
+            </Link>
+            <Link href={navItems[currentLanguage].offers} className={`block py-4 text-center ${pathname === navItems[currentLanguage].offers ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>
+              {currentLanguage === "pl" ? "Oferta" : "Offers"}
+            </Link>
+            <Link href={navItems[currentLanguage].contact} className={`block py-4 text-center ${pathname === navItems[currentLanguage].contact ? "font-bold" : ""} hover:bg-gray-700`} onClick={() => setIsDropdownOpen(false)}>
+              {currentLanguage === "pl" ? "Kontakt" : "Contact"}
+            </Link>
 
             <div className="flex justify-center space-x-4 py-4">
               <SocialIcon url="https://www.facebook.com" style={{ height: 35, width: 35 }} />

@@ -3,19 +3,19 @@ import React, { useState } from "react";
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    imię: "",
-    nazwisko: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    temat: "",
-    wiadomość: "",
+    subject: "",
+    message: "",
   });
   const [messages, setMessages] = useState({ success: "", error: "" });
   const [errors, setErrors] = useState({
-    imię: "",
-    nazwisko: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    temat: "",
-    wiadomość: "",
+    subject: "",
+    message: "",
   });
 
   const isValidEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
@@ -32,15 +32,15 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
 
     const newErrors = {
-      imię: !formData.imię ? "Imię jest wymagane" : "",
-      nazwisko: !formData.nazwisko ? "Nazwisko jest wymagane" : "",
+      firstName: !formData.firstName ? "First name is required" : "",
+      lastName: !formData.lastName ? "Last name is required" : "",
       email: !formData.email
-        ? "Email jest wymagany"
+        ? "Email is required"
         : !isValidEmail(formData.email)
-        ? "Niepoprawny adres email"
+        ? "Invalid email address"
         : "",
-      temat: !formData.temat ? "Temat jest wymagany" : "",
-      wiadomość: !formData.wiadomość ? "Wiadomość jest wymagana" : "",
+      subject: !formData.subject ? "Subject is required" : "",
+      message: !formData.message ? "Message is required" : "",
     };
 
     setErrors(newErrors);
@@ -50,11 +50,11 @@ const ContactForm: React.FC = () => {
     if (hasErrors) {
       setMessages({
         success: "",
-        error: "Wystąpił błąd podczas przesyłania formularza.",
+        error: "An error occurred while submitting the form.",
       });
     } else {
       setMessages({
-        success: "Twoja wiadomość została wysłana pomyślnie!",
+        success: "Your message has been sent successfully!",
         error: "",
       });
     }
@@ -64,10 +64,9 @@ const ContactForm: React.FC = () => {
     <div className="flex justify-center items-center min-h-[80vh] bg-blue-50 py-12 px-4">
       <div className="flex flex-col lg:flex-row space-y-8 lg:space-x-8 w-full lg:max-w-6xl">
         <div className="space-y-4 text-center lg:text-left lg:w-1/2">
-          <h2 className="text-3xl font-bold">Skontaktuj się z nami!</h2>
+          <h2 className="text-3xl font-bold">Contact Us!</h2>
           <p className="text-gray-600">
-            Zastanawiasz się nad kupnem nieruchomości? Skontaktuj się z nami,
-            aby uzyskać więcej informacji i zaplanować spotkanie.
+            Are you considering buying a property? Contact us for more information and to schedule a meeting.
           </p>
           <div className="space-y-2 text-gray-500">
             <p>📍 12 Avenue, New York, NY 10160</p>
@@ -78,12 +77,12 @@ const ContactForm: React.FC = () => {
 
         {/* Contact Form Section */}
         <form onSubmit={handleSubmit} className="space-y-6 lg:w-1/2">
-          {["imię", "nazwisko", "email", "temat", "wiadomość"].map((field) => (
+          {["Name", "Surname", "email", "subject", "message"].map((field) => (
             <div key={field}>
               <input
                 id={field}
                 name={field}
-                type={field === "wiadomość" ? "textarea" : "text"}
+                type={field === "message" ? "textarea" : "text"}
                 value={formData[field as keyof typeof formData]}
                 onChange={handleInputChange}
                 placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
@@ -137,9 +136,9 @@ const ContactForm: React.FC = () => {
 
           <button
             type="submit"
-            className="flex justify-center mx-auto md:mx-0 w-[100px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full "
+            className="flex justify-center mx-auto md:mx-0 w-[100px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
           >
-            Wyślij
+            Send
           </button>
 
           {messages.success && (
@@ -160,7 +159,7 @@ const ContactForm: React.FC = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className="font-medium">Wiadomość została wysłana!</span>
+                <span className="font-medium">Message has been sent!</span>
               </div>
               <button
                 type="button"

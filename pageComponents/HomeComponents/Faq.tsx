@@ -2,7 +2,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const FaqItem = ({ question, answer }: { question: string; answer: string }) => {
+const FaqItem = ({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -37,49 +43,61 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
 const Faq = () => {
   const faqs = [
     {
-      question: 'Jakie są najpopularniejsze lokalizacje nieruchomości w Batumi?',
-      answer: 'Najpopularniejsze lokalizacje to centrum miasta, okolice plaży oraz nowoczesne osiedla w pobliżu atrakcji turystycznych.'
+      question:
+        "Jakie są najpopularniejsze lokalizacje nieruchomości w Batumi?",
+      answer:
+        " Najpopularniejsze lokalizacje to centrum Batumi, okolice plaży oraz nowoczesne osiedla w dzielnicach turystycznych, takich jak Bulwar Batumi i dzielnica New Boulevard, znana z nowoczesnych apartamentowców.",
     },
     {
-      question: 'Jakie są średnie ceny mieszkań w Batumi?',
-      answer: 'Średnie ceny mieszkań w Batumi wahają się od 1000 do 2000 USD za metr kwadratowy, w zależności od lokalizacji i standardu.'
+      question: "Jakie są średnie ceny mieszkań w Batumi?",
+      answer:
+        "Średnie ceny mieszkań w Batumi wynoszą od 1000 do 3000 USD za metr kwadratowy, zależnie od lokalizacji, odległości od morza i standardu budynku.",
     },
     {
-      question: 'Czy inwestowanie w nieruchomości w Batumi jest opłacalne?',
-      answer: 'Tak, Batumi staje się popularnym miejscem dla inwestycji, z rosnącą turystyką i rozwijającą się infrastrukturą.'
+      question: "Czy inwestowanie w nieruchomości w Batumi jest opłacalne?",
+      answer:
+        "Tak, Batumi cieszy się rosnącą popularnością wśród inwestorów, szczególnie ze względu na dynamicznie rozwijający się rynek turystyczny, a także dogodne warunki prawne dla inwestorów zagranicznych.",
     },
     {
-      question: 'Jakie są koszty utrzymania nieruchomości w Batumi?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
-    }, 
-    {
-      question: 'Ile trwa proces zakupu mieszkania?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
+      question: "Jakie są koszty utrzymania nieruchomości w Batumi?",
+      answer:
+        "Koszty utrzymania nieruchomości obejmują czynsz administracyjny, opłaty za media oraz podatki lokalne, które są niższe w porównaniu do innych europejskich miast. W przypadku apartamentów wakacyjnych, koszty te mogą być zredukowane dzięki wynajmowi krótkoterminowemu.",
     },
     {
-      question: 'Ile trwa rezerwacja mieszkania, a ile przepisanie?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
+      question: "Ile trwa proces zakupu mieszkania?",
+      answer:
+        " Proces zakupu mieszkania w Batumi jest stosunkowo szybki i może trwać od kilku dni do kilku tygodni, w zależności od szybkości formalności prawnych i finansowych. Zakup można przeprowadzić zarówno na miejscu, jak i zdalnie.",
     },
     {
-      question: 'Czy jest możliwość kupić zdalnie mieszkanie?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
+      question: "Ile trwa rezerwacja mieszkania, a ile przepisanie?",
+      answer:
+        "Rezerwacja mieszkania może zająć od kilku godzin do kilku dni, w zależności od dewelopera. Proces przepisania własności zwykle trwa do dwóch tygodni, po zakończeniu wszystkich formalności prawnych.",
     },
     {
-      question: 'Ile turystów przybywa do Gruzji i do Batumi?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
+      question: "Czy jest możliwość kupić zdalnie mieszkanie?",
+      answer:
+        "Tak, istnieje możliwość zakupu mieszkania zdalnie. Wielu deweloperów oferuje pełną obsługę zdalną, od rezerwacji po finalizację zakupu, bez potrzeby osobistej obecności w Gruzji.",
     },
     {
-      question: 'Jak sfinansować zakup?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
+      question: "Ile turystów przybywa do Gruzji i do Batumi?",
+      answer:
+        "Gruzja przyciąga co roku miliony turystów, a Batumi jest jednym z najchętniej odwiedzanych miast, szczególnie w sezonie letnim. Rocznie Batumi odwiedza około 2-3 miliony turystów, co wpływa na rozwój rynku nieruchomości.",
     },
     {
-      question: 'Czy w Gruzji jest bezpiecznie?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
+      question: "Jak sfinansować zakup?",
+      answer:
+        "Zakup nieruchomości w Batumi można sfinansować z własnych środków lub poprzez lokalne banki oferujące kredyty hipoteczne. Niektórzy deweloperzy oferują również systemy ratalne, które ułatwiają zakup bez potrzeby zaciągania kredytu.",
     },
     {
-      question: 'Jak długo trwa sezon w Batumi?',
-      answer: 'Koszty utrzymania nieruchomości obejmują czynsz, media oraz podatki lokalne, które są stosunkowo niskie w porównaniu do innych miast.'
-    }
+      question: "Czy w Gruzji jest bezpiecznie?",
+      answer:
+        "Gruzja, w tym Batumi, jest ogólnie bezpiecznym miejscem do życia i inwestowania. Rząd i służby porządkowe dbają o bezpieczeństwo turystów oraz mieszkańców, a przestępczość jest na stosunkowo niskim poziomie.",
+    },
+    {
+      question: "Jak długo trwa sezon w Batumi?",
+      answer:
+        "Sezon turystyczny w Batumi trwa od maja do września, kiedy temperatury są najwyższe, a miasto tętni życiem. Jednak wiele osób odwiedza Batumi także poza sezonem, korzystając z jego atrakcji przez cały rok.",
+    },
   ];
 
   return (
@@ -91,7 +109,9 @@ const Faq = () => {
           Najczęściej zadawane pytania
         </h2>
         <p className="text-lg text-center text-gray-600 mb-6 px-8 font-semibold">
-          Poniżej znajdziesz odpowiedzi na najczęściej zadawane pytania dotyczące inwestowania w nieruchomości w Batumi. Mamy nadzieję, że znajdziesz tu wszystkie potrzebne informacje!
+          Poniżej znajdziesz odpowiedzi na najczęściej zadawane pytania
+          dotyczące inwestowania w nieruchomości w Batumi. Mamy nadzieję, że
+          znajdziesz tu wszystkie potrzebne informacje!
         </p>
         <div className="bg-white shadow-lg rounded-xl p-8">
           {faqs.map((faq, index) => (
@@ -99,8 +119,6 @@ const Faq = () => {
           ))}
         </div>
       </div>
-
-    
     </div>
   );
 };

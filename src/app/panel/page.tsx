@@ -57,6 +57,11 @@ const AdminPage: React.FC = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    router.replace('/login');
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -69,11 +74,19 @@ const AdminPage: React.FC = () => {
     <div className="container mx-auto px-4 my-20 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Panel</h1>
-        <Link href="/panel/add">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-            Dodaj Nową Ofertę
+        <div className="flex gap-4">
+          <Link href="/panel/add">
+            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+              Dodaj Nową Ofertę
+            </button>
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition"
+          >
+            Wyloguj się
           </button>
-        </Link>
+        </div>
       </div>
 
       {properties.length === 0 ? (

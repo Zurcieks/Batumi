@@ -2,22 +2,22 @@ import dynamic from "next/dynamic";
 import React from "react";
  
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
-import OfferInfo from "../../../pageComponents/AboutComponents/OfferInfo";
+const OfferInfo = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enOfferInfo"), { ssr: true });
  
  
 
 // Dynamically import the components
-const WhyUsSection = dynamic(() => import("../../../pageComponents/AboutComponents/WhyUsSection"), { ssr: true });
-const History = dynamic(() => import("../../../pageComponents/AboutComponents/History"), { ssr: true });
-const Testimonials = dynamic(() => import("../../../pageComponents/AboutComponents/Testimionials"), { ssr: false });
-const ContactSection = dynamic(() => import("../../../pageComponents/HomeComponents/Contact"), { ssr: false });
+const WhyUsSection = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enWhy"), { ssr: true });
+const History = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enHistory"), { ssr: true });
+const Testimonials = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enTestimonials"), { ssr: false });
+ 
 
 const InfoSection = dynamic(
-  () => import("../../../pageComponents/AboutComponents/InfoSection"),
+  () => import("../../../../enPageComponents/enAboutComponents/enInfoSection"),
   { ssr: false }
 );
 const Hero = dynamic(
-  () => import("../../../pageComponents/AboutComponents/Hero"),
+  () => import("../../../../enPageComponents/enAboutComponents/enAboutHero"),
   { ssr: true }
 );
 
@@ -51,9 +51,7 @@ const page = () => {
       <section>
         <Testimonials/>
       </section>
-      <section>
-        <ContactSection />
-      </section>
+     
     </div>
   );
 };
