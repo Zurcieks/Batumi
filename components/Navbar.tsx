@@ -62,7 +62,11 @@ const Navbar: React.FC = () => {
   };
 
   const handleLogoClick = () => {
-    handleLanguageSwitch('pl'); // Zmiana języka na polski po kliknięciu w logo
+    if (pathname.startsWith("/en")) {
+      router.push("/en");
+    } else {
+      router.push("/");
+    }
   };
 
   const navItems = {
@@ -85,7 +89,7 @@ const Navbar: React.FC = () => {
       } bg-black`}
     >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
-        <Link href="/" onClick={handleLogoClick}>
+        <Link href={pathname.startsWith("/en") ? "/en" : "/"} onClick={handleLogoClick}>
           <Image
             src='/logo.webp'
             alt="Logo"

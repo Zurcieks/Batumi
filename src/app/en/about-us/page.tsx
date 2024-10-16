@@ -1,16 +1,25 @@
 import dynamic from "next/dynamic";
 import React from "react";
- 
+
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
-const OfferInfo = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enOfferInfo"), { ssr: true });
- 
- 
+const OfferInfo = dynamic(
+  () => import("../../../../enPageComponents/enAboutComponents/enOfferInfo"),
+  { ssr: true }
+);
 
 // Dynamically import the components
-const WhyUsSection = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enWhy"), { ssr: true });
-const History = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enHistory"), { ssr: true });
-const Testimonials = dynamic(() => import("../../../../enPageComponents/enAboutComponents/enTestimonials"), { ssr: false });
- 
+const WhyUsSection = dynamic(
+  () => import("../../../../enPageComponents/enAboutComponents/enWhy"),
+  { ssr: true }
+);
+const History = dynamic(
+  () => import("../../../../enPageComponents/enAboutComponents/enHistory"),
+  { ssr: true }
+);
+const Testimonials = dynamic(
+  () => import("../../../../enPageComponents/enAboutComponents/enTestimonials"),
+  { ssr: false }
+);
 
 const InfoSection = dynamic(
   () => import("../../../../enPageComponents/enAboutComponents/enInfoSection"),
@@ -22,10 +31,10 @@ const Hero = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "InvestinGeorgia - O nas",
-  description: "Dowiedz się o nas więcej!",
+  title: "InvestinGeorgia - About us",
+  description: "Learn more about us!",
   keywords:
-    "Informacje o firmie InvestinGeorgia, inwestycje w Batumi, nieruchomości Gruzja, kim jesteśmy, nasza historia, inwestycje zagraniczne, zespół InvestinGeorgia, oferta nieruchomości, doświadczenie na rynku nieruchomości, wsparcie inwestorów, inwestycje w Gruzji, inwestycje nad Morzem Czarnym, o nas, inwestowanie w Batumi, oferta dla inwestorów, nasze wartości, dlaczego Batumi, nieruchomości nad morzem",
+    "About InvestinGeorgia, investment in Batumi, real estate Georgia, who we are, our history, foreign investment, InvestinGeorgia team, real estate offer, real estate experience, investor support, investment in Georgia, Black Sea investment, about us, investing in Batumi, investor offer, our values, why Batumi, real estate by the sea",
 };
 
 const page = () => {
@@ -38,7 +47,7 @@ const page = () => {
         <InfoSection />
       </section>
       <section>
-        <OfferInfo/>
+        <OfferInfo />
       </section>
       <section>
         <History />
@@ -49,9 +58,8 @@ const page = () => {
       </section>
 
       <section>
-        <Testimonials/>
+        <Testimonials />
       </section>
-     
     </div>
   );
 };

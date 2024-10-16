@@ -24,6 +24,7 @@ const AdminPage: React.FC = () => {
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
+    console.log('Token:', token);
     if (!token) {
       router.replace('/login');
     } else {

@@ -38,6 +38,26 @@ const Footer: React.FC = () => {
     }
   };
 
+  // Funkcja do uzyskania odpowiednich linków na podstawie języka
+  const getLinkHref = (path: string) => {
+    if (pathname.startsWith('/en')) {
+      switch (path) {
+        case '/':
+          return '/en';
+        case '/o-nas':
+          return '/en/about-us';
+        case '/oferta':
+          return '/en/offers';
+        case '/kontakt':
+          return '/en/contact';
+        default:
+          return '';
+      }
+    } else {
+      return path; // Domyślne linki w języku polskim
+    }
+  };
+
   return (
     <footer className="bg-black text-gray-300 py-8">
       {/* Sekcja ikon mediów społecznościowych */}
@@ -55,10 +75,10 @@ const Footer: React.FC = () => {
       {/* Sekcja z linkami */}
       <div className="container mx-auto px-4 text-center mb-6">
         <ul className="flex justify-center flex-wrap space-x-4">
-          <li><a href="/" className="hover:underline text-white hover:text-white">{getLinkText('/')}</a></li>
-          <li><a href="/o-nas" className="hover:underline text-white hover:text-white">{getLinkText('/o-nas')}</a></li>
-          <li><a href="/oferta" className="hover:underline text-white hover:text-white">{getLinkText('/oferta')}</a></li>
-          <li><a href="/kontakt" className="hover:underline text-white hover:text-white">{getLinkText('/kontakt')}</a></li>
+          <li><a href={getLinkHref('/')} className="hover:underline text-white hover:text-white">{getLinkText('/')}</a></li>
+          <li><a href={getLinkHref('/o-nas')} className="hover:underline text-white hover:text-white">{getLinkText('/o-nas')}</a></li>
+          <li><a href={getLinkHref('/oferta')} className="hover:underline text-white hover:text-white">{getLinkText('/oferta')}</a></li>
+          <li><a href={getLinkHref('/kontakt')} className="hover:underline text-white hover:text-white">{getLinkText('/kontakt')}</a></li>
         </ul>
       </div>
 

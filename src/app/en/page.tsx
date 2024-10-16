@@ -6,7 +6,8 @@ const HeroMain = dynamic(() => import("../../../enPageComponents/enHero"), {
   ssr: true,
 });
 const InformationSection = dynamic(
-  () => import("../../../enPageComponents/enHomeComponents/enInformationSection"),
+  () =>
+    import("../../../enPageComponents/enHomeComponents/enInformationSection"),
   { ssr: true }
 );
 const AboutSection = dynamic(
@@ -23,26 +24,33 @@ const ContactSection = dynamic(
   { ssr: false }
 );
 import { Metadata } from "next";
-const OfferSection = dynamic(() => import("../../../enPageComponents/enHomeComponents/enOfferSection"), {
-  ssr: false,
-});
-const Faq = dynamic(() => import("../../../enPageComponents/enHomeComponents/enFaq"), {
-  ssr: false,
-});
- 
-const InvestorSection = dynamic(() => import("../../../enPageComponents/enHomeComponents/enInvestorSection"), {
+const OfferSection = dynamic(
+  () => import("../../../enPageComponents/enHomeComponents/enOfferSection"),
+  {
     ssr: false,
-  });
+  }
+);
+const Faq = dynamic(
+  () => import("../../../enPageComponents/enHomeComponents/enFaq"),
+  {
+    ssr: false,
+  }
+);
 
-  
-   
+const InvestorSection = dynamic(
+  () => import("../../../enPageComponents/enHomeComponents/enInvestorSection"),
+  {
+    ssr: false,
+  }
+);
+
 // Definicja metadanych
 export const metadata: Metadata = {
-  title: "InvestinGeorgia - Strona główna",
+  title: "InvestinGeorgia - Home",
   description:
-    "Znajdź idealne nieruchomości w Batumi. Oferujemy różnorodne opcje dla każdego. Sprawdź naszą ofertę!",
+    "Find the perfect property in Batumi. We offer a variety of options for everyone. Check out our offer!",
   keywords:
-    " nieruchomości Batumi, inwestowanie w Gruzji, apartamenty nad morzem, mieszkania Batumi, rynek nieruchomości, inwestycje zagraniczne, zakup nieruchomości w Gruzji, wynajem apartamentów, zarządzanie nieruchomościami, usługi nieruchomościowe Batumi, inwestycje w Gruzji, atrakcyjne lokalizacje, rynek nieruchomości nad Morzem Czarnym, nowoczesne apartamenty, inwestycje nadmorskie, Gruzja nieruchomości, kupno mieszkania Batumi, wynajem długoterminowy, nieruchomości inwestycyjne, bezpieczne inwestowanie, apartamenty na sprzedaż Batumi",
+    " Batumi real estate, investing in Georgia, apartments by the sea, Batumi apartments, real estate market, foreign investments, buying real estate in Georgia, apartment rentals, property management, real estate services Batumi, investments in Georgia, attractive locations, real estate market on the Black Sea, modern apartments, coastal investments, Georgia real estate, buying an apartment Batumi, long-term rentals, investment properties, safe investing, apartments for sale Batumi",
 };
 
 const Page: React.FC = () => {
@@ -77,8 +85,6 @@ const Page: React.FC = () => {
       <section>
         <ContactSection />
       </section>
-
-    
     </div>
   );
 };

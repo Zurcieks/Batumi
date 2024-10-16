@@ -5,8 +5,8 @@ const HeroContact = dynamic(() => import("../../../../enPageComponents/enContact
 const ContactForm = dynamic(() => import("../../../../enPageComponents/enContactComponents/enContactForm"), { ssr: true });
 
 export const metadata: Metadata = {
-  title: "InvestinGeorgia - Kontakt",
-  description: "Skontaktuj się z nami w sprawie nieruchomości w Batumi, a odpowiemy w ciągu kilku dni!",
+  title: "InvestinGeorgia - Contact",
+  description: "Contact with us about a property in Batumi and we will respond within a few days!",
 };
 
 const ContactPage: React.FC = () => {

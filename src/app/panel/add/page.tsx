@@ -32,6 +32,7 @@ const AddProperty: React.FC = () => {
           name === 'rooms'
             ? Number(value)
             : value,
+            
       });
     };
     useEffect(() => {
@@ -52,6 +53,7 @@ const AddProperty: React.FC = () => {
         alert('Proszę dodać co najmniej jedno zdjęcie.');
         return;
       }
+       
   
       const uploadData = new FormData();
       uploadData.append('title', formData.title);
@@ -61,10 +63,14 @@ const AddProperty: React.FC = () => {
       uploadData.append('area', formData.area.toString());
       uploadData.append('price', formData.price.toString());
       formData.images.forEach((file) => uploadData.append('images', file));
-  
+      const token = sessionStorage.getItem('token');
       try {
         setUploading(true);
-        await axios.post('/properties', uploadData, {
+        await axios.post('/properties', uploadData,   {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          
         
         });
         setUploading(false);

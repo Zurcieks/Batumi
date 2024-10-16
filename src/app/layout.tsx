@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-        <link rel="icon" href="/dupa.png" sizes="128x128" />
+       <link rel="icon" href="/favicon.ico"    />
       </head>
       <body className="flex flex-col min-h-screen">
         <Navbar />
