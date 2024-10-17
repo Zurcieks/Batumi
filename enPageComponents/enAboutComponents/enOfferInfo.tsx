@@ -2,7 +2,7 @@ import { FaCamera, FaChartLine, FaBuilding, FaHandHoldingUsd, FaPaintBrush, FaHo
 
 const ServicesSection = () => {
   return (
-    <section className="flex flex-col items-center py-5 bg-gray-100 mb-12 ml-7">
+    <section className="flex flex-col items-center py-5  mb-12 ml-7">
       <hr className="my-12 border-t-2 border-gray-300 mx-auto w-full opacity-75" />
       <h2 className="text-4xl font-bold text-gray-800 mb-8">What do we offer?</h2>
 

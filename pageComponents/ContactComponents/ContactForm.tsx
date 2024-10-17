@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -52,16 +53,47 @@ const ContactForm: React.FC = () => {
         success: "",
         error: "Wystąpił błąd podczas przesyłania formularza.",
       });
-    } else {
-      setMessages({
-        success: "Twoja wiadomość została wysłana pomyślnie!",
-        error: "",
-      });
+      return;
     }
+
+    const serviceID = "service_lh68c4h";
+    const templateID = "template_0txeb0j";
+    const userID = "pIBixEm6lHSuEELCh";
+
+    const templateParams = {
+      imię: formData.imię,
+      nazwisko: formData.nazwisko,
+      email: formData.email,
+      temat: formData.temat,
+      wiadomość: formData.wiadomość,
+    };
+
+    emailjs.send(serviceID, templateID, templateParams, userID).then(
+      (response) => {
+        setMessages({
+          success: "Twoja wiadomość została wysłana pomyślnie!",
+          error: "",
+        });
+        setFormData({
+          imię: "",
+          nazwisko: "",
+          email: "",
+          temat: "",
+          wiadomość: "",
+        });
+      },
+      (error) => {
+        setMessages({
+          success: "",
+          error:
+            "Wystąpił błąd podczas przesyłania wiadomości. Spróbuj ponownie.",
+        });
+      }
+    );
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh] bg-blue-50 py-12 px-4">
+    <div className="flex justify-center items-center min-h-[80vh]   py-12 px-4">
       <div className="flex flex-col lg:flex-row space-y-8 lg:space-x-8 w-full lg:max-w-6xl">
         <div className="space-y-4 text-center lg:text-left lg:w-1/2">
           <h2 className="text-3xl font-bold">Skontaktuj się z nami!</h2>
@@ -70,9 +102,7 @@ const ContactForm: React.FC = () => {
             aby uzyskać więcej informacji i zaplanować spotkanie.
           </p>
           <div className="space-y-2 text-gray-500">
-            <p>📍 12 Avenue, New York, NY 10160</p>
-            <p>✉️ contact@business.com</p>
-            <p>📞 +1 910-626-85255</p>
+            <p>✉️ batumi.investingeorgia@gmail.com</p>
           </div>
         </div>
 
