@@ -20,7 +20,7 @@ const merriweather = Merriweather({
 
 const InfoSection = () => {
   return (
-    <section className="py-16 px-6 md:px-12 lg:px-24 bg-gray-50">
+    <section className="py-16 px-6 md:px-12 lg:px-24  ">
       {/* Tekst główny */}
       <div className="max-w-7xl mx-auto md:grid md:grid-cols-1 md:gap-12">
         <div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const ContactForm: React.FC = () => {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setMessages({ success: "", error: "" });
-    setErrors({ ...errors, [e.target.name]: "" }); // Reset error on change
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -52,12 +53,42 @@ const ContactForm: React.FC = () => {
         success: "",
         error: "An error occurred while submitting the form.",
       });
-    } else {
-      setMessages({
-        success: "Your message has been sent successfully!",
-        error: "",
-      });
+      return;
     }
+
+    const serviceID = "service_lh68c4h";
+    const templateID = "template_2jmkro9";
+    const userID = "pIBixEm6lHSuEELCh";
+
+    const templateParams = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    emailjs.send(serviceID, templateID, templateParams, userID).then(
+      (response) => {
+        setMessages({
+          success: "Your message has been sent successfully!",
+          error: "",
+        });
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      },
+      (error) => {
+        setMessages({
+          success: "",
+          error: "An error occurred while sending your message. Please try again.",
+        });
+      }
+    );
   };
 
   return (
@@ -66,17 +97,15 @@ const ContactForm: React.FC = () => {
         <div className="space-y-4 text-center lg:text-left lg:w-1/2">
           <h2 className="text-3xl font-bold">Contact Us!</h2>
           <p className="text-gray-600">
-            Are you considering buying a property? Contact us for more
-            information and to schedule a meeting.
+            Are you considering buying a property? Contact us for more information and to schedule a meeting.
           </p>
           <div className="space-y-2 text-gray-500">
-            <p>batumi.investingeorgia@gmail.com</p>
+            <p>✉️ batumi.investingeorgia@gmail.com</p>
           </div>
         </div>
 
-        {/* Contact Form Section */}
         <form onSubmit={handleSubmit} className="space-y-6 lg:w-1/2">
-          {["Name", "Surname", "email", "subject", "message"].map((field) => (
+          {["firstName", "lastName", "email", "subject", "message"].map((field) => (
             <div key={field}>
               <input
                 id={field}
