@@ -11,6 +11,9 @@ interface Property {
   description: string;
   bathrooms: number;
   rooms: number;
+  bedrooms: number;
+  floors: number;
+  yearBuild: number;
   area: number;
   price: number;
   images: string[];
@@ -38,6 +41,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDelete }) => {
           <div className="text-gray-600 text-sm">
             <p>Łazienki: {property.bathrooms}</p>
             <p>Pokoje: {property.rooms}</p>
+            <p>Sypialnie: {property.bedrooms}</p>
+            <p>Piętra: {property.floors}</p>
+            <p>Rok budowy: {property.yearBuild}</p>
             <p>Powierzchnia: {property.area} m²</p>
             <p>Cena: {property.price} PLN</p>
           </div>

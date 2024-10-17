@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { FaBed, FaBath, FaVectorSquare } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import Link from "next/link";
 
 interface Offer {
@@ -23,8 +24,6 @@ const OfferSection: React.FC = () => {
   const [offers, setOffers] = useState<Offer[]>([]);
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const [hoveredOfferId, setHoveredOfferId] = useState<string | null>(null);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const fetchOffers = async () => {
@@ -39,59 +38,40 @@ const OfferSection: React.FC = () => {
     fetchOffers();
   }, []);
 
-  const handleMouseEnter = (offerId: string, imagesLength: number) => {
-    setHoveredOfferId(offerId);
-    if (imagesLength > 1) {
-      const id = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagesLength);
-      }, 2000);
-      setIntervalId(id);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredOfferId(null);
-    setCurrentImageIndex(0);
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    }
-  };
-
   const openModal = (offer: Offer) => {
     setSelectedOffer(offer);
+    setCurrentImageIndex(0);
   };
 
   const closeModal = () => {
     setSelectedOffer(null);
   };
 
+  const setMainImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
   return (
     <div className="max-w-screen-2xl mx-auto px-4 py-16 lg:px-8 lg:py-20">
       <h2 className="text-4xl lg:text-5xl font-extrabold text-center mb-4 tracking-tight leading-tight">
-        Check out what we've prepared for you!
+        See what we have prepared for you!
       </h2>
       <p className="text-lg text-center text-gray-700 mb-8 max-w-2xl mx-auto">
-        Our latest real estate offers in Batumi provide an excellent
-        combination of modernity, comfort, and location near the sea. Whether
-        you're looking for a luxury apartment or a cozy flat, we have something for you. Check out what we've prepared!
+        Our latest property proposals in Batumi offer the perfect combination of
+        modernity, comfort and location close to the sea. Without whether you
+        are looking for a luxury apartment or a cozy apartment, we have
+        something for you. Check out what we have prepared!
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-        {offers.map((offer, index) => (
+        {offers.map((offer) => (
           <div
             key={offer._id}
             className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative group"
-            onMouseEnter={() => handleMouseEnter(offer._id, offer.images.length)}
-            onMouseLeave={handleMouseLeave}
           >
             <div className="relative">
               <img
-                src={`http://localhost:5000${
-                  hoveredOfferId === offer._id
-                    ? offer.images[currentImageIndex]
-                    : offer.images[0]
-                }`}
+                src={`http://localhost:5000${offer.images[currentImageIndex]}`}
                 alt={offer.title}
                 className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -104,90 +84,33 @@ const OfferSection: React.FC = () => {
             </div>
             <div className="p-5">
               <p className="text-sm text-gray-500 uppercase">{offer.type}</p>
-              <h3 className="text-xl font-semibold text-black mb-2">{offer.title}</h3>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                {offer.title}
+              </h3>
               <div className="flex items-center text-gray-600 text-sm mb-4 space-x-4">
                 <p className="flex items-center">
-                  <FaBed className="mr-1" />
+                  <FaBed className="mr-2 w-4 h-4" />
                   {offer.rooms} Bedrooms
                 </p>
                 <p className="flex items-center">
-                  <FaBath className="mr-1" />
+                  <FaBath className="mr-1 w-4 h-4" />
                   {offer.bathrooms} Bathrooms
                 </p>
                 <p className="flex items-center">
-                  <FaVectorSquare className="mr-1" />
+                  <FaVectorSquare className="mr-1 w-4 h-4" />
                   {offer.area} m²
                 </p>
               </div>
-              <button
-                onClick={() => openModal(offer)}
+              <Link
                 className="my-auto bg-blue-700 text-white text-sm font-semibold px-4 py-3 rounded-lg transition-colors duration-300 self-start"
+                href={`/en/offers//${offer._id}`}
               >
-                See Details
-              </button>
+                Check details!
+              </Link>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Modal */}
-      {selectedOffer && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 px-4 py-6">
-          <div className="bg-white rounded-lg w-full max-w-md p-6 relative overflow-y-auto max-h-[90vh] flex flex-col space-y-6">
-            <button
-              onClick={closeModal}
-              className="absolute top-3 right-3 text-gray-600 hover:text-black transition-colors text-3xl"
-            >
-              &times;
-            </button>
-
-            <div>
-              <Slider
-                dots={true}
-                infinite={true}
-                speed={500}
-                slidesToShow={1}
-                slidesToScroll={1}
-                className="mb-6"
-              >
-                {selectedOffer.images.map((image, index) => (
-                  <div key={index}>
-                    <img
-                      src={`http://localhost:5000${image}`}
-                      alt={`${selectedOffer.title} image ${index + 1}`}
-                      className="w-full h-80 object-cover rounded-lg"
-                    />
-                  </div>
-                ))}
-              </Slider>
-
-              <div className="flex justify-around mt-6">
-                <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
-                  <p className="text-gray-700 font-semibold">Bedrooms</p>
-                  <p className="text-2xl text-black">{selectedOffer.rooms}</p>
-                </div>
-                <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
-                  <p className="text-gray-700 font-semibold">Bathrooms</p>
-                  <p className="text-2xl text-black">
-                    {selectedOffer.bathrooms}
-                  </p>
-                </div>
-                <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
-                  <p className="text-gray-700 font-semibold">Area</p>
-                  <p className="text-2xl text-black">
-                    {selectedOffer.area} m²
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-xl font-bold mb-2">{selectedOffer.title}</h4>
-              <p className="text-gray-700">{selectedOffer.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

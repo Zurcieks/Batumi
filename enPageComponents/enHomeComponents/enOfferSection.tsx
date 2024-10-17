@@ -138,12 +138,12 @@ const OfferSection: React.FC = () => {
                   </p>
                 </div>
 
-                <button
-                  onClick={() => openModal(offer)}
+                <Link href={`/en/offers//${offer._id}`}
+               
                   className=" my-auto bg-blue-700 text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 self-start"
                 >
                   View Details
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -162,80 +162,7 @@ const OfferSection: React.FC = () => {
           </Link>
         </div>
 
-        {/* Modal */}
-        {selectedOffer && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 px-4 py-6">
-            <div className="bg-white rounded-lg w-full max-w-md p-6 relative overflow-y-auto max-h-[90vh] flex flex-col space-y-6">
-              {/* Close Button */}
-              <button
-                onClick={closeModal}
-                className="absolute top-3 right-3 text-gray-600 hover:text-black transition-colors text-3xl"
-              >
-                &times;
-              </button>
-
-              {/* Image Gallery */}
-              <div>
-                <Slider
-                  dots={true}
-                  infinite={true}
-                  speed={500}
-                  slidesToShow={1}
-                  slidesToScroll={1}
-                  className="mb-6"
-                >
-                  {selectedOffer.images.map((image, index) => (
-                    <div key={index}>
-                      <img
-                        src={`http://localhost:5000${image}`}
-                        alt={`${selectedOffer.title} image ${index + 1}`}
-                        className="w-full h-80 object-cover rounded-lg"
-                      />
-                    </div>
-                  ))}
-                </Slider>
-
-                {/* Info in Square Boxes */}
-                <div className="flex justify-around mt-6">
-                  <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
-                    <p className="text-gray-700 font-semibold">Bedrooms</p>
-                    <p className="text-2xl text-black">{selectedOffer.rooms}</p>
-                  </div>
-                  <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
-                    <p className="text-gray-700 font-semibold">Bathrooms</p>
-                    <p className="text-2xl text-black">
-                      {selectedOffer.bathrooms}
-                    </p>
-                  </div>
-                  <div className="text-center bg-gray-100 p-4 rounded-md w-1/3">
-                    <p className="text-gray-700 font-semibold">Surface</p>
-                    <p className="text-2xl text-black">
-                      {selectedOffer.area} m²
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Offer Details */}
-              <div className="text-left">
-                <h3 className="text-3xl font-semibold mb-4 text-black">
-                  {selectedOffer.title}
-                </h3>
-
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  {selectedOffer.description}
-                </p>
-
-                <button
-                  onClick={closeModal}
-                  className="text-white text-sm font-semibold px-6 py-3 rounded-lg bg-blue-500 transition-colors duration-300"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        
       </div>
     </div>
   );

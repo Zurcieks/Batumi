@@ -11,6 +11,9 @@ const AddProperty: React.FC = () => {
       title: '',
       description: '',
       bathrooms: 0,
+      bedrooms: 0,
+      yearBuild: 0,
+      floors: 0,
       rooms: 0,
       area: 0,
       price: 0,
@@ -59,6 +62,9 @@ const AddProperty: React.FC = () => {
       uploadData.append('title', formData.title);
       uploadData.append('description', formData.description);
       uploadData.append('bathrooms', formData.bathrooms.toString());
+      uploadData.append('bedrooms', formData.bedrooms.toString());
+      uploadData.append('floors', formData.floors.toString());
+      uploadData.append('yearBuild', formData.yearBuild.toString());
       uploadData.append('rooms', formData.rooms.toString());
       uploadData.append('area', formData.area.toString());
       uploadData.append('price', formData.price.toString());
@@ -125,6 +131,42 @@ const AddProperty: React.FC = () => {
               />
             </div>
             <div>
+              <label className="block mb-2 font-semibold">Liczba sypialni</label>
+              <input
+                type="number"
+                name="bedrooms"
+                min="0"
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={formData.bedrooms}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-2 font-semibold">Numer piętra</label>
+              <input
+                type="number"
+                name="floors"
+                min="0"
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={formData.floors}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-2 font-semibold">Rok zbudowania</label>
+              <input
+                type="number"
+                name="yearBuild"
+                min="0"
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={formData.yearBuild}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
               <label className="block mb-2 font-semibold">Liczba Pokoi</label>
               <input
                 type="number"
@@ -149,7 +191,7 @@ const AddProperty: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 font-semibold">Cena (PLN)</label>
+              <label className="block mb-2 font-semibold">Cena ($)</label>
               <input
                 type="number"
                 name="price"

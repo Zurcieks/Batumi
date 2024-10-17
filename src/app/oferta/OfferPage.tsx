@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 interface Offer {
   _id: string;
@@ -100,95 +101,16 @@ const OfferSection: React.FC = () => {
                   {offer.area} m²
                 </p>
               </div>
-              <button
-                onClick={() => openModal(offer)}
+              <Link
                 className="my-auto bg-blue-700 text-white text-sm font-semibold px-4 py-3 rounded-lg transition-colors duration-300 self-start"
+                href={`/oferta//${offer._id}`}  
               >
                 Zobacz Szczegóły
-              </button>
+              </Link>
             </div>
           </div>
         ))}
       </div>
-
-      {selectedOffer && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 px-4 py-6">
-          <div className="bg-white rounded-lg w-full max-w-4xl p-6 relative overflow-y-auto max-h-[90vh] flex flex-col space-y-6">
-            <button
-              onClick={closeModal}
-              className="absolute top-3 right-3 text-gray-600 hover:text-black transition-colors text-3xl"
-            >
-              &times;
-            </button>
-
-            {/* Main Image */}
-            <div className="w-full flex justify-center">
-              <img
-                src={`http://localhost:5000${selectedOffer.images[currentImageIndex]}`}
-                alt={`${selectedOffer.title} main image`}
-                className="w-full max-w-3xl  max-h-[60vh]  object-cover rounded-lg"
-              />
-            </div>
-
-            <div className="flex justify-center items-center">
-              {/* Thumbnails as Swiper Slider */}
-            <Swiper
-              spaceBetween={10}
-              slidesPerView={4}
-              pagination={{ clickable: true }}
-              modules={[Pagination]}
-              className="w-[80vh] py-10"
-              breakpoints={{
-                640: { slidesPerView: 4 }, // Desktop
-                0: { slidesPerView: 2 }, // Mobile
-              }}
-            >
-              {selectedOffer.images.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <img
-                    src={`http://localhost:5000${image}`}
-                    alt={`${selectedOffer.title} thumbnail ${index + 1}`}
-                    className={`w-full h-24 object-cover rounded-lg cursor-pointer border-2 ${
-                      currentImageIndex === index
-                        ? "border-blue-500"
-                        : "border-transparent"
-                    }`}
-                    onClick={() => setMainImage(index)}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            </div>
-
-          
-            
-            <div className="flex flex-col justify-center text-center text-2xl mt-6 px-4 ">
-              
-              <h4 className="text-xl font-bold mb-2">{selectedOffer.title}</h4>
-              <p className="text-gray-700 mb-4 text-sm">
-                {selectedOffer.description}
-              </p>
-
-              <div className="flex justify-around mt-6">
-                <div className="text-center bg-gray-100 p-3 rounded-md w-1/3">
-                  <p className="text-gray-700 font-semibold text-sm">Sypialnie</p>
-                  <p className="text-xl text-black">{selectedOffer.rooms}</p>
-                </div>
-                <div className="text-center bg-gray-100 p-3 rounded-md w-1/3">
-                  <p className="text-gray-700 font-semibold text-sm">Łazienki</p>
-                  <p className="text-xl text-black">
-                    {selectedOffer.bathrooms}
-                  </p>
-                </div>
-                <div className="text-center bg-gray-100 p-3 rounded-md w-1/3">
-                  <p className="text-gray-700 font-semibold text-sm">Powierzchnia</p>
-                  <p className="text-xl text-black">{selectedOffer.area} m²</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

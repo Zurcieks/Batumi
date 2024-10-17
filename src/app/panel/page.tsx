@@ -11,6 +11,9 @@ interface Property {
   title: string;
   description: string;
   bathrooms: number;
+  bedrooms: number;
+  floors: number;
+  yearBuild: number;
   rooms: number;
   area: number;
   price: number;
