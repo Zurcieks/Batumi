@@ -58,6 +58,7 @@ const InfoSection = () => {
             src={InfoImage4}
             alt="Rozwiązania nieruchomości"
             className="w-full h-full object-cover"
+            priority
           />
         </div>
       </div>
@@ -77,6 +78,7 @@ const InfoSection = () => {
             src={InfoImage2}
             alt="Opcje nieruchomości"
             className="w-full h-full object-cover"
+            priority
           />
         </div>
       </div>
@@ -96,6 +98,7 @@ const InfoSection = () => {
             src={InfoImage3}
             alt="Rozwiązania nieruchomości"
             className="w-full h-full object-cover"
+            priority
           />
         </div>
       </div>
