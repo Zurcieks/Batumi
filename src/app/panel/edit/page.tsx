@@ -9,6 +9,9 @@ interface Property {
   _id: string;
   title: string;
   description: string;
+  bedrooms: number;
+  floors: number;
+  yearBuild: number;
   bathrooms: number;
   rooms: number;
   area: number;
@@ -25,6 +28,9 @@ const EditProperty: React.FC = () => {
     title: '',
     description: '',
     bathrooms: 0,
+    bedrooms: 0,
+    floors: 0,
+    yearBuild: 0,
     rooms: 0,
     area: 0,
     price: 0,
@@ -33,6 +39,7 @@ const EditProperty: React.FC = () => {
   const [existingImages, setExistingImages] = useState<string[]>([]);
   const [uploading, setUploading] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (propertyId) {
@@ -54,6 +61,9 @@ const EditProperty: React.FC = () => {
         title: property.title,
         description: property.description,
         bathrooms: property.bathrooms,
+        bedrooms: property.bedrooms,
+        floors: property.floors,
+        yearBuild: property.yearBuild,
         rooms: property.rooms,
         area: property.area,
         price: property.price,
@@ -73,10 +83,7 @@ const EditProperty: React.FC = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]:
-        name === 'price' || name === 'area' || name === 'bathrooms' || name === 'rooms'
-          ? Number(value)
-          : value,
+      [name]: name === 'price' || name === 'area' || name === 'bathrooms' || name === 'rooms' || name === 'bedrooms' || name === 'floors' || name === 'yearBuild' ? Number(value) : value,
     });
   };
 
@@ -90,37 +97,47 @@ const EditProperty: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null); // Reset błędu
 
     const uploadData = new FormData();
     uploadData.append('title', formData.title);
     uploadData.append('description', formData.description);
     uploadData.append('bathrooms', formData.bathrooms.toString());
+    uploadData.append('bedrooms', formData.bedrooms.toString());
+    uploadData.append('floors', formData.floors.toString());
+    uploadData.append('yearBuild', formData.yearBuild.toString());
     uploadData.append('rooms', formData.rooms.toString());
     uploadData.append('area', formData.area.toString());
     uploadData.append('price', formData.price.toString());
 
-    // Dodanie nowych zdjęć
+    // Dodaj nowe zdjęcia
     formData.images.forEach((file) => uploadData.append('images', file));
 
-    // Dodanie istniejących zdjęć jako URL
+    // Dodaj istniejące zdjęcia jako URL
     existingImages.forEach((url) => uploadData.append('existingImages', url));
+
+    // Logowanie, aby sprawdzić dane
+    for (let pair of uploadData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
 
     try {
       setUploading(true);
-      await axios.put(`/properties/${propertyId}`, uploadData, {
+      const response = await axios.patch(`/properties/${propertyId}`, uploadData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${sessionStorage.getItem('token')}`,
         },
       });
+      console.log('Response:', response);
       setUploading(false);
       router.push('/panel');
     } catch (error) {
       console.error('Error updating property:', error);
+      setError('Wystąpił problem podczas aktualizacji oferty. Spróbuj ponownie.');
       setUploading(false);
     }
-  };
-
+};
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -165,6 +182,42 @@ const EditProperty: React.FC = () => {
               min="0"
               className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={formData.bathrooms}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold">Liczba Sypialni</label>
+            <input
+              type="number"
+              name="bedrooms"
+              min="0"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.bedrooms}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold">Piętra</label>
+            <input
+              type="number"
+              name="floors"
+              min="0"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.floors}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold">Rok Budowy</label>
+            <input
+              type="number"
+              name="yearBuild"
+              min="0"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.yearBuild}
               onChange={handleInputChange}
               required
             />

@@ -94,32 +94,35 @@ const OfferPage = () => {
             ))}
           </Swiper>
 
-          {/* Thumbnails */}
-          <Swiper
-            onSwiper={setThumbsSwiper} // Ustaw miniaturki
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Thumbs]} // Zarejestruj FreeMode i Thumbs
-            className="flex justify-center overflow-x-auto space-x-4 my-4"
-          >
-            {offer.images.map((image, index) => (
-              <SwiperSlide
-                key={index}
-                className={` flex-shrink-0 cursor-pointer rounded-lg overflow-hidden border-2 ${
-                  activeIndex === index ? "border-pink-500" : "border-gray-300"
-                }`}
-                style={{ width: "150px", height: "150px" }}
-              >
-                <img
-                  src={`http://localhost:5000${image}`}
-                  alt={`Thumbnail ${index}`}
-                  className="object-cover w-full h-full "
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+         
+            <Swiper
+              onSwiper={setThumbsSwiper} // Ustaw miniaturki
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Thumbs]} // Zarejestruj FreeMode i Thumbs
+              className="flex justify-center overflow-x-auto space-x-4 my-4"
+            >
+              {offer.images.map((image, index) => (
+                <SwiperSlide
+                  key={index}
+                  className={` flex-shrink-0 cursor-pointer rounded-lg overflow-hidden border-2 ${
+                    activeIndex === index
+                      ? "border-pink-500"
+                      : "border-gray-300"
+                  }`}
+                  style={{ width: "150px", height: "150px" }}
+                >
+                  <img
+                    src={`http://localhost:5000${image}`}
+                    alt={`Thumbnail ${index}`}
+                    className="object-cover w-full h-full "
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+ 
         </div>
 
         {/* Property Details */}
