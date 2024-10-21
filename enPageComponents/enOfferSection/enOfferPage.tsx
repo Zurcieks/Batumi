@@ -28,7 +28,7 @@ const OfferSection: React.FC = () => {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/properties");
+        const response = await axios.get("https://backend-production-0309.up.railway.app/properties");
         setOffers(response.data);
       } catch (error) {
         console.error("Error fetching offers:", error);
