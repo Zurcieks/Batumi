@@ -51,7 +51,7 @@ const AdminPage: React.FC = () => {
   const handleDelete = async (id: string) => {
     if (confirm('Czy na pewno chcesz usunąć tę ofertę?')) {
       try {
-        await axios.delete(`/properties/${id}`, {
+        await axios.delete(`https://backend-production-0309.up.railway.app/api/auth/login/properties/${id}`, {
           headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
         });
         setProperties(properties.filter((property) => property._id !== id));

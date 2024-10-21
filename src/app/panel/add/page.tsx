@@ -72,7 +72,7 @@ const AddProperty: React.FC = () => {
       const token = sessionStorage.getItem('token');
       try {
         setUploading(true);
-        await axios.post('https://backend-production-0309.up.railway.app/properties', uploadData,   {
+        await axios.post('/https://backend-production-0309.up.railway.app/properties', uploadData,   {
           headers: {
             Authorization: `Bearer ${token}`,
           },
