@@ -25,7 +25,7 @@ const LoginPage = () => {
     setError(''); // Wyczyszczenie poprzedniego błędu
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { 
+      const res = await axios.post('http://backend-production-0309.up.railway.app/api/auth/login', { 
         username, 
         password 
       });
