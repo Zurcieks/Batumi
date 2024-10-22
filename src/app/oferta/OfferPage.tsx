@@ -71,7 +71,7 @@ const OfferSection: React.FC = () => {
           >
             <div className="relative">
               <img
-                src={`http://localhost:5000${offer.images[currentImageIndex]}`}
+                src={`https://backend-production-0309.up.railway.app${offer.images[currentImageIndex]}`}
                 alt={offer.title}
                 className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
               />
