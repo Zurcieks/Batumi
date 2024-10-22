@@ -29,7 +29,8 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDelete }) => {
     <div className="flex flex-col md:flex-row bg-white shadow-md rounded-lg overflow-hidden">
       <div className=" ">
         <img
-          src={`http://localhost:5000${property.images[0]}`} // Adres serwera plus ścieżka obrazu
+          src={property.images[0]}
+          
           alt={property.title}
           className="w-auto h-72 object-cover"
         />

@@ -85,7 +85,7 @@ const OfferPage = () => {
               <SwiperSlide key={index}>
                 <div className="w-auto h-[500px] md:h-[600px] lg:h-[80vh] overflow-hidden rounded-lg bg-white flex items-center justify-center border">
                   <img
-                    src={`http://localhost:5000${image}`}
+                    src={image}
                     alt={`Slide ${index}`}
                     className="object-cover w-full h-full"
                   />
