@@ -30,7 +30,7 @@ const OfferSection: React.FC = () => {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/properties");
+        const response = await axios.get("https://backend-production-0309.up.railway.app/properties");
         setOffers(response.data);
       } catch (error) {
         console.error("Error fetching offers:", error);
@@ -104,11 +104,11 @@ const OfferSection: React.FC = () => {
             >
               <div className="relative">
                 <img
-                  src={`http://localhost:5000${
+                  src={
                     hoveredOfferId === offer._id
                       ? offer.images[currentImageIndex]
                       : offer.images[0]
-                  }`}
+                  }
                   alt={offer.title}
                   className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
                 />
@@ -138,8 +138,8 @@ const OfferSection: React.FC = () => {
                   </p>
                 </div>
 
-                <Link href={`/en/offers//${offer._id}`}
-               
+                <Link
+                  href={`/en/offers//${offer._id}`}
                   className=" my-auto bg-blue-700 text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 self-start"
                 >
                   View Details
@@ -161,8 +161,6 @@ const OfferSection: React.FC = () => {
             Offers
           </Link>
         </div>
-
-        
       </div>
     </div>
   );
