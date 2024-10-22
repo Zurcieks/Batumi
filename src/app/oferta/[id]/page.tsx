@@ -115,7 +115,7 @@ const OfferPage = () => {
                   style={{ width: "150px", height: "150px" }}
                 >
                   <img
-                    src={`http://localhost:5000${image}`}
+                    src={image}
                     alt={`Thumbnail ${index}`}
                     className="object-cover w-full h-full "
                   />
